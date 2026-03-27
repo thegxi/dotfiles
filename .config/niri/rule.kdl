@@ -1,0 +1,78 @@
+// `niri msg layers`显示有namespace
+layer-rule {
+    match namespace="^swww-daemon$"
+    place-within-backdrop false // 不能为ture，如果为true会覆盖壁纸
+    // opacity 0.75
+}
+layer-rule {
+    match namespace="waybar"
+    match at-startup=true
+
+    // Properties that apply continuously.
+    block-out-from "screencast"
+    // block-out-from "screen-capture"
+
+    shadow {
+        on
+        // off
+        softness 40
+        spread 5
+        offset x=0 y=5
+        draw-behind-window true
+        color "#00000064"
+        // inactive-color "#00000064"
+    }
+
+    geometry-corner-radius 12
+    place-within-backdrop true
+    baba-is-float false
+}
+layer-rule {
+    match namespace="mako"  // 通知管理器
+    opacity 0.9
+    geometry-corner-radius 8
+    shadow {
+        on
+        softness 30
+        spread 3
+        color "#00000048"
+    }
+}
+layer-rule {
+    match namespace="swaylock"
+    opacity 1.0
+    block-out-from "screencast"
+}
+// 使用`niri msg windows`查看Title和App ID等信息
+window-rule{
+  open-on-output "HDMI-A-1"
+  default-column-width { proportion 0.7556; }
+}
+window-rule {
+    // This regular expression is intentionally made as specific as possible,
+    // since this is the default config, and we want no false positives.
+    // You can get away with just app-id="wezterm" if you want.
+    match app-id=r#"^org\.wezfurlong\.wezterm$"#
+    default-column-width {}
+}
+window-rule {
+    // This app-id regular expression will work for both:
+    // - host Firefox (app-id is "firefox")
+    // - Flatpak Firefox (app-id is "org.mozilla.firefox")
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    match app-id="clipse-gui"
+    match app-id="waypaper"
+    open-floating true
+}
+window-rule {
+    geometry-corner-radius 12
+    clip-to-geometry true
+    opacity 0.99
+    draw-border-with-background false
+}
+window-rule {
+  match app-id="custom-kitty"
+  open-floating true
+  default-column-width { proportion 0.35; }
+  default-window-height { fixed 500; }
+}

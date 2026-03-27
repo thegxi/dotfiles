@@ -1,0 +1,98 @@
+input {
+  keyboard {
+    xkb {
+      layout "us"
+      // variant "colemak_dh_ortho"
+      // options "compose:ralt,ctrl:nocaps"
+      // model ""
+      // rules ""
+      // file "~/.config/keymap.xkb"
+    }
+
+    // repeat-delay 600
+    // repeat-rate 25
+    // track-layout "global"
+    // numlock
+  }
+
+  touchpad {
+    off
+    // tap // tap-to-click.
+    // dwt // disable-when-typing.
+    // dwtp // disable-when-trackpointing.
+    // drag false // can be true or false, controls if tap-and-drag is enabled.
+    // drag-lock // if set, lifting the finger off for a short time while dragging will not drop the dragged item. 
+    // natural-scroll // if set, inverts the scrolling direction
+    // accel-speed 0.2 // pointer acceleration speed,valid values are from -1.0 to 1.0
+    // accel-profile "flat" // can be adaptive (the default) or `flat` (disables pointer acceleration).
+    // scroll-factor 1.0 // scales the scrolling speed by this value
+    // scroll-factor vertical=1.0 horizontal=-2.0
+    // scroll-method "two-finger" // when to generate scroll events instead of pointer motion events,can be `no-scroll`,`two-finger`,`edge`or `on-button-down`.The default and supported methods vary depending on the device type.
+    // scroll-button 273 // the button code used for the `on-button-down` scroll method.You can find it in `libinput debug-events`.
+    // scroll-button-lock // when enabled, the button does not need to be held down. Pressing once engages scrolling, pressing a second time disengages it, and double click acts as single click of the the underlying button.
+    // tap-button-map "left-middle-right" // can be left-right-middle or left-middle-right, controls which button corresponds to a two-finger tap and a three-finger tap.
+    // click-method "clickfinger" // can be button-areas or clickfinger, changes the click method.
+    // left-handed // if set, changes the device to left-handed mode. 
+    // disabled-on-external-mouse do not send events while external pointer device is plugged in.
+    // middle-emulation // emulate a middle mouse click by pressing left and right mouse buttons at once.
+  }
+
+  mouse {
+    // off
+    // natural-scroll
+    // accel-speed 0.2
+    // accel-profile "flat"
+    // scroll-factor 1.0
+    scroll-factor vertical=1.0 horizontal=-2.0
+    // scroll-method "no-scroll"
+    // scroll-button 273
+    // scroll-button-lock
+    // left-handed
+    // middle-emulation
+  }
+
+  trackpoint {
+    // off
+    // natural-scroll
+    // accel-speed 0.2
+    // accel-profile "flat"
+    // scroll-method "on-button-down"
+    // scroll-button 273
+    // scroll-button-lock
+    // left-handed
+    // middle-emulation
+  }
+
+  trackball {
+    // off
+    // natural-scroll
+    // accel-speed 0.2
+    // accel-profile "flat"
+    // scroll-method "on-button-down"
+    // scroll-button 273
+    // scroll-button-lock
+    // left-handed
+    // middle-emulation
+  }
+
+  tablet {
+    // off
+    map-to-output "HDMI-A-1"
+    // left-handed
+    // calibration-matrix 1.0 0.0 0.0 0.0 1.0 0.0
+  }
+
+  touch {
+    // off
+    map-to-output "HDMI-A-1"
+    // calibration-matrix 1.0 0.0 0.0 0.0 1.0 0.0
+  }
+
+  // disable-power-key-handling
+  // warp-mouse-to-focus
+  // focus-follows-mouse max-scroll-amount="0%"
+  // workspace-auto-back-and-forth
+
+  mod-key "Super"
+  // mod-key-nested "Alt"
+}

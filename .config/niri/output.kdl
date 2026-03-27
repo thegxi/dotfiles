@@ -1,0 +1,20 @@
+output "HDMI-A-1" {
+  // 格式为"<width>x<height>" 或者 "<width>x<height>@<refersh rate>"
+  // 如果省略刷新率，niri默认选择最高的刷新率
+  mode "1920x1080@60.000"
+  // 缩放比,可使用整数或分数量表，如150%
+  scale 1.0
+  // 输出在显示器坐标空间的位置，未明确配置位置的显示器将放置在已经放置的显示器的右侧
+  position x=0 y=0
+  variable-refresh-rate // on-demand=true
+  // 默认聚焦在这个显示器
+  focus-at-startup
+  backdrop-color "#001100"
+
+  // transform允许逆时针旋转显示,可设置值: normal, 90, 180, 270, flipped, flipped-90, flipped-180, flipped-270
+  transform "normal"
+
+  hot-corners {
+      top-left
+  }
+}
