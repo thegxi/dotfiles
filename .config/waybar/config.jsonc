@@ -1,0 +1,138 @@
+// -*- mode: jsonc -*-
+{
+  "layer": "top", 
+  "position": "top", 
+  "height": 20, 
+  // "spacing": 5, 
+
+  ///////////////////////////////////////////////
+  "modules-left": [
+    "group/container"
+  ],
+  "modules-center": ["cava"],
+  "modules-right": [
+    "clock", // 时钟
+    "group/main",
+    "tray" // 系统托盘，显示正在运行的程序图标    
+  ],
+
+//////////////////////组排版//////////////////////////
+"group/container":{
+    "orientation":"inherit",
+    "modules":[
+        "custom/logo",    
+        "niri/workspaces"
+      ]
+},
+
+"group/main":{
+    "orientation":"inherit",
+      // "drawer":{
+      //   "transition-duration":500,
+      //   "children-class":"not-power",
+      //   "transition-left-to-right":true
+      // },
+    "modules":[
+        "custom/powerprofile",// 自定义电源模式，一秒刷新显示
+        "pulseaudio",
+        "cpu",
+        "bluetooth" // 蓝牙模块
+      ]
+  },
+  
+//////////////////////模块设置//////////////////////////
+  // Modules configuration
+  "custom/logo":{
+    "format":"󰣇",
+    // "format":"󱢇"
+    "tooltip":false
+  },
+  "niri/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      // Named workspaces
+      // (you need to configure them in niri)
+      "browser": "",
+      "discord": "",
+      "chat": "<b></b>",
+
+      // Icons by state
+      "active": "",
+      "default": ""
+    }
+  },
+  "cava":{
+    "framerate": 30,
+    "autosens": 1,
+    "bars": 14,
+    "lower_cutoff_freq": 50,
+    "higher_cutoff_freq": 10000,
+    "hide_on_silence": true,
+    "method": "pulse",
+    "source": "auto",
+    "stereo": false,
+    "bar_delimiter": 0,
+    "monstercat": false,
+    "waves": false,
+    "noise_reduction": 0.6,
+    "input_delay": 4,
+    "sleep_timer": 1,
+    "format-icons": [
+      "▁",
+      "▂",
+      "▂▃",
+      "▄",
+      "▅",
+      "▆",
+      "▇█",
+      "█"
+    ],
+    // format-icons = [ " " "▁" "▃" "▄" "▅" "▆" "▇" "█" ],
+    "actions": {
+      "on-click-right": "mode"
+    }
+  },
+  "cpu":{
+    "format":"{icon} {usage}%",
+    "interval":10,
+    "tooltip":false,
+    "format-icons":[""]
+  },
+  "tray": {
+    "icon-size": 20,
+    "spacing": 10
+  },
+  "bluetooth": {
+    "format":"󰂯 {status}"
+  },
+  "clock": {
+    "timezone": "Asia/Shanghai",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format-alt": "{:%Y-%m-%d}"
+  },
+  "custom/powerprofile": {
+    // "format-source": "{icon}",
+    "tooltip": true,
+    "exec":"~/.config/waybar/scripts/toggle-power-profile.sh get",
+    "return-type":"json",
+    "on-click":"~/.config/waybar/scripts/toggle-power-profile.sh toggle",
+    "interval":1 // 刷新时间一秒
+  //   "format-icons": {
+  //   "性能": "󰓅",
+  //   "省电": "󰾆",
+  //   "平衡": ""
+  // }
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "{format_source}",
+    "format-source":"󰕿",
+    "format-source-muted":"",
+    // "rotate":, // 旋转文字
+    "format-icons": {
+      "headphone": "",
+      "default": ["󰕿", "󰖀", "󰕾"]
+    },
+    "on-click": "pavucontrol"
+  }
+ }

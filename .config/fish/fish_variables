@@ -1,0 +1,6 @@
+# This file contains fish universal variable definitions.
+# VERSION: 3.0
+SETUVAR __fish_initialized:4300
+SETUVAR --export all_proxy:http\x3a//127\x2e0\x2e0\x2e1\x3a20171
+SETUVAR --export http_proxy:http\x3a//127\x2e0\x2e0\x2e1\x3a20171
+SETUVAR --export https_proxy:http\x3a//127\x2e0\x2e0\x2e1\x3a20171

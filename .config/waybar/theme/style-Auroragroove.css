@@ -1,0 +1,180 @@
+/* ===== 极光律动主题 (Aurora Groove) ===== */
+/* 主背景: 深空黑 (半透明，带磨砂效果)rgba(19, 17, 26, 0.7); */
+/* 次级背景: 暗星紫 rgba(36, 32, 48, 0.7); */
+@define-color accent-primary #50fa7b;                  /* 主色: 极光绿 */
+@define-color accent-secondary #ff79c6;               /* 次色: 霓虹粉 */
+@define-color text-primary #f8f8f2;                   /* 主文本: 月光白 */
+@define-color text-dim #6272a4;                       /* 弱化文本: 冰川灰 */
+@define-color border-glass rgba(80, 250, 123, 0.2);    /* 辉光/边框: 基于极光绿 */
+@define-color urgent #ff5555;                         /* 警告色: 熔岩红 */
+
+/* ===== 全局基础设置 ===== */
+* {
+    font-family: "FiraCode Nerd Font Mono", "JetBrains Mono", sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    min-height: 0;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: @text-primary;
+    /* 应用磨砂玻璃效果，需要你的Wayland合成器支持（如Hyprland的blur）*/
+    /* 在Hyprland中，可以在hyprland.conf为waybar层开启blur */
+}
+
+/* ===== 左右容器: 设定为流动的光带 ===== */
+#container, #main {
+    background: rgba(19, 17, 26, 0.7);
+    border-radius: 50px; /* 核心改变: 使用大圆角作为基础 */
+    padding: 2px 4px;
+    margin: 6px 8px;
+    border: 1px solid @border-glass;
+    box-shadow: 0 0 12px 2px rgba(80, 250, 123, 0.1); /* 基础辉光 */
+}
+
+/* ----- Logo ----- */
+#custom-logo {
+    font-size: 18px;
+    color:rgba(36, 32, 48, 0.7);
+    margin-right: 8px;
+    padding: 0 10px;
+}
+
+/* ----- 工作区: 有机能量团 ----- */
+#workspaces {
+    background: transparent;
+    padding: 0;
+}
+
+#workspaces button {
+    padding: 2px 12px;
+    margin: 4px 5px;
+    /* 核心改变: 不规则圆角，模拟有机形态 */
+    border-radius: 20px 8px 20px 8px; 
+    animation: workinit 300ms ease-out reverse;
+    animation-timing-function: steps(24);
+    color: @text-dim;
+    background-color: rgba(36, 32, 48, 0.7);
+    box-shadow: none;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#workspaces button.active, button.special.active{
+    font-weight: bold;
+    animation: work 300ms ease-out;
+    animation-timing-function: steps(24);
+    /* 核心改变: 充满活力的极光渐变 */
+    background: linear-gradient(115deg, @accent-primary, @accent-secondary);
+    color: rgba(19, 17, 26, 0.7);
+    /* 核心改变: 激活状态下的辉光效果 */
+    box-shadow: 0 0 8px 1px @accent-primary;
+    border-radius: 8px 20px 8px 20px; /* 改变形状以示区别 */
+}
+
+#workspaces button.empty {
+    color: @text-dim;
+    background: transparent;
+}
+
+#workspaces button.urgent {
+    background: @urgent;
+    color: @text-primary;
+    box-shadow: 0 0 8px 1px @urgent;
+}
+
+#workspaces button:hover {
+    transition: all 0.3s ease-in-out;
+    background: rgba(80, 250, 123, 0.2);
+    color: @text-primary;
+    box-shadow: inset 0 0 5px rgba(80, 250, 123, 0.5);
+}
+
+@keyframes work {
+    0%{
+        padding: 0px 10px;
+    }
+    50% {
+        padding: 0px 16px; /* 可以决定动画强度 */
+    }
+    100%{
+        padding: 0px 10px;
+    }
+}
+
+@keyframes workinit {
+      0%{
+        padding: 0px 10px;
+    }
+    50% {
+        padding: 0px 16px;
+    }
+    100%{
+        padding: 0px 10px;
+    }
+}
+/* ===== 右侧系统模块 ===== */
+#main {
+    border-radius: 50px;
+}
+
+/* ----- 统一模块样式: 漂浮的光点 ----- */
+#clock, #pulseaudio, #cpu, #tray, #bluetooth, #custom-powerprofile {
+    padding: 4px 14px;
+    margin: 4px 3px;
+    border-radius: 50px; /* 完全圆润的药丸形状 */
+    background: rgba(36, 32, 48, 0.7);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ----- 时钟: 主视觉焦点 ----- */
+#clock {
+    font-weight: bold;
+    background: linear-gradient(115deg, rgba(36, 32, 48, 0.7), #bd93f9); 
+    color: rgba(19, 17, 26, 0.7);
+}
+
+/* ----- 音频控制 ----- */
+#pulseaudio.muted {
+    background: #44475a;
+    color: @text-dim;
+}
+
+/* ----- 蓝牙 ----- */
+#bluetooth {
+    color: #bd93f9; /* 淡紫色 */
+}
+
+#bluetooth.off {
+    background: #44475a;
+    color: @text-dim;
+}
+
+/* ----- 系统托盘 ----- */
+#tray {
+    padding: 0 10px;
+}
+
+#tray > .needs-attention {
+    background: @urgent;
+}
+
+/* ===== 辅助动画效果 ===== */
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1;  }
+}
+
+#workspaces button, #main > * {
+    animation: fade-in 0.5s ease-out;
+}
+
+/* ===== 模块悬停反馈: 点亮辉光 ===== */
+#clock:hover, #pulseaudio:hover, #cpu:hover, #tray:hover, #bluetooth:hover,#custom-powerprofile:hover {
+    box-shadow: 0 0 10px 0 @accent-primary;
+    background: rgba(36, 32, 48, 0.7);
+}

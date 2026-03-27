@@ -1,0 +1,19 @@
+;;; early-init.el --- 启动优化 -*- lexical-binding: t -*-
+
+;; 1. 垃圾回收优化：启动时设为最大，减少启动耗时
+(setq gc-cons-threshold most-positive-fixnum gc-cons-percentage 0.6)
+
+;; 2. 极致 UI 预设：彻底禁用工具栏、滚动条、菜单栏，防止启动闪烁
+(push '(menu-bar-lines . 0) default-frame-alist)
+(push '(tool-bar-lines . 0) default-frame-alist)
+(push '(vertical-scroll-bars . -1) default-frame-alist)
+(push '(horizontal-scroll-bars . -1) default-frame-alist)
+(push '(internal-border-width . 15) default-frame-alist) ; 增加内边距，更美观
+
+;; 3. 基础预设
+(setq inhibit-startup-screen t
+      inhibit-startup-echo-area-message "xi" ; 确保这是你的系统登录名
+      initial-scratch-message nil
+      initial-major-mode 'text-mode)
+
+(provide 'early-init)
