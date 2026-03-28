@@ -56,7 +56,6 @@ opt.clipboard = "unnamedplus" -- 共享系统剪切板
 -- 状态栏与命令行
 opt.laststatus = 2          -- 总是显示状态行,0:禁用;
 opt.ruler = true            -- 状态栏显示列信息
-opt.cmdheight = 1           -- 命令行高度为1行
 opt.showcmd = true          -- 显示当前键入的命令
 
 -- 兼容性与性能
@@ -66,3 +65,5 @@ opt.lazyredraw = true       -- 宏执行时不重绘
 -- 缓存区
 opt.splitbelow = true       -- 默认在下方打开
 opt.splitright = true       -- 默认在右方打开
+
+vim.opt.lazyredraw = false  -- 必须关闭，否则 Noice 会报错且 UI 闪烁
