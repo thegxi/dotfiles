@@ -136,6 +136,7 @@ return {
       },
     },
     config = function(_, opts)
+      vim.api.nvim_set_hl(0, "NoiceSearch", { fg = "#928374", italic = true })
       -- 如果使用了 nvim-notify，可以在这里初始化背景色
       require("notify").setup({
         background_colour = "#000000", -- 设置为黑色或透明

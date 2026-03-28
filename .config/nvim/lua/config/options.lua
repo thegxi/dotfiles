@@ -1,3 +1,5 @@
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 local opt = vim.opt
 
 -- 行号与光标
