@@ -166,3 +166,7 @@ map("n", "<leader>du", dapui.toggle)
 
 -- 悬浮查看变量 (非常重要！)
 map("n", "<leader>di", dapui.eval, { silent = true, noremap = true, desc = "Debug: Hover Variable" })
+
+map({ "n" }, "<leader>?", function()
+	require("which-key").show({ global = false })
+end, { desc = "Buffer Local Keymaps (which-key)" })
