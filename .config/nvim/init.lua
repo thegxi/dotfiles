@@ -2,7 +2,9 @@
 require("config.options")
 -- package manager
 require("config.lazy")
+require("config.terminal")
 require("config.keymap")
+require("config.dap-java")
 
 vim.lsp.enable("lua-language-server")
 vim.lsp.enable("jdtls")
