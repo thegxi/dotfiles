@@ -6,7 +6,7 @@ require("config.terminal")
 require("config.keymap")
 require("config.dap-java")
 
-vim.lsp.enable("lua-language-server")
+vim.lsp.enable("lua_ls")
 vim.lsp.enable("jdtls")
 vim.lsp.enable("pyright")
 vim.lsp.enable("gopls")
