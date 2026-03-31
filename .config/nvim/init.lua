@@ -4,7 +4,7 @@ require("config.options")
 require("config.lazy")
 require("config.terminal")
 require("config.keymap")
-require("config.dap-java")
+require("config.dap")
 
 vim.lsp.enable("clangd")
 vim.lsp.enable("lua_ls")

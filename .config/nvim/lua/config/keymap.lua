@@ -78,13 +78,21 @@ map("n", "<C-k>", "<C-w>k", { silent = true, noremap = true, desc = "Focus on up
 map("n", "<C-l>", "<C-w>l", { silent = true, noremap = true, desc = "Focus on right" })
 
 -- 如果补全窗开着，按 Esc 先关窗；如果关着，再退出插入模式
+-- map("i", "<Esc>", function()
+-- 	if require("blink.cmp").is_visible() then
+-- 		require("blink.cmp").hide()
+-- 	else
+-- 		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
+-- 	end
+-- end)
 map("i", "<Esc>", function()
 	if require("blink.cmp").is_visible() then
 		require("blink.cmp").hide()
 	else
-		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
+		-- 使用 stopinsert 命令更直接可靠,防止ctrl + [失效
+		vim.cmd("stopinsert")
 	end
-end)
+end, { silent = true, noremap = true })
 
 -- 使用 jk (手指自然摆放位置)
 map("i", "jk", "<Esc>", { silent = true, noremap = true, desc = "Return to Normal Mode" })
