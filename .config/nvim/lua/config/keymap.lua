@@ -20,7 +20,7 @@ map("n", "<leader>bd", function()
 end, { silent = true, noremap = true, desc = "Close Current Buffer" })
 
 -- 快捷键：使用 <leader>e (Explorer)
-map("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { silent = true, noremap = true, desc = "Toggle Explorer" })
+map("n", "<leader>ee", "<cmd>NvimTreeToggle<cr>", { silent = true, noremap = true, desc = "Toggle Explorer" })
 -- 自动定位到当前文件
 map(
 	"n",
@@ -96,7 +96,7 @@ end, { silent = true, noremap = true })
 
 -- 使用 jk (手指自然摆放位置)
 map("i", "jk", "<Esc>", { silent = true, noremap = true, desc = "Return to Normal Mode" })
-map("v", "jk", "<Esc>", { silent = true, noremap = true, desc = "Return to Normal Mode" })
+-- map("v", "jk", "<Esc>", { silent = true, noremap = true, desc = "Return to Normal Mode" })
 
 -- 弹出 LazyGit 控制台
 map("n", "<leader>gg", "<cmd>LazyGit<cr>", { silent = true, noremap = true, desc = "LazyGit" })
@@ -104,7 +104,6 @@ map("n", "<leader>gg", "<cmd>LazyGit<cr>", { silent = true, noremap = true, desc
 -- 如果你想查看当前文件的提交历史
 map("n", "<leader>gf", "<cmd>LazyGitCurrentFile<cr>", { silent = true, noremap = true, desc = "LazyGit Current File" })
 
-local map = vim.keymap.set
 local term = require("config.terminal")
 
 -- 1. 全局切换终端 (使用 Alt + i 或者 <leader>t)
@@ -152,9 +151,9 @@ local dapui = require("dapui")
 
 -- 基础调试操作
 map("n", "<F5>", dap.continue, { silent = true, noremap = true, desc = "Debug: Start/Continue" })
-map("n", "<F10>", dap.step_over, { silent = true, noremap = true, desc = "Debug: Step Over" })
-map("n", "<F11>", dap.step_into, { silent = true, noremap = true, desc = "Debug: Step Into" })
-map("n", "<F12>", dap.step_out, { silent = true, noremap = true, desc = "Debug: Step Out" })
+map("n", "<F8>", dap.step_over, { silent = true, noremap = true, desc = "Debug: Step Over" })
+map("n", "<F7>", dap.step_into, { silent = true, noremap = true, desc = "Debug: Step Into" })
+map("n", "<F10>", dap.step_out, { silent = true, noremap = true, desc = "Debug: Step Out" })
 
 -- 断点与 UI
 map("n", "<leader>db", dap.toggle_breakpoint, { silent = true, noremap = true, desc = "Debug: Toggle Breakpoint" })
