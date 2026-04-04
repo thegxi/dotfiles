@@ -94,10 +94,6 @@ map("i", "<Esc>", function()
 	end
 end, { silent = true, noremap = true })
 
--- 使用 jk (手指自然摆放位置)
-map("i", "jk", "<Esc>", { silent = true, noremap = true, desc = "Return to Normal Mode" })
--- map("v", "jk", "<Esc>", { silent = true, noremap = true, desc = "Return to Normal Mode" })
-
 -- 弹出 LazyGit 控制台
 map("n", "<leader>gg", "<cmd>LazyGit<cr>", { silent = true, noremap = true, desc = "LazyGit" })
 
@@ -131,6 +127,8 @@ map("v", "<a-j>", ":m '>+1<cr>gv=gv", { noremap = true, silent = true, desc = "M
 map("v", "<a-k>", ":m '<-2<cr>gv=gv", { noremap = true, silent = true, desc = "Move selection up" })
 
 map("i", "<a-s>", "<c-o>:wq!<CR>", { noremap = true, silent = true, desc = "Force quit file" })
+-- 插入模式下 Ctrl+Enter 跳到下一行开头
+map("i", "<C-CR>", "<Esc>o", { noremap = true, silent = true })
 map(
 	"n",
 	"<leader>p",
