@@ -31,9 +31,6 @@ return {
 				lualine_bold = true, -- Lualine 中加粗模式字符
 			})
 
-			-- 设置 colorscheme
-			vim.cmd([[colorscheme tokyonight]])
-
 			-- 选配：lualine.nvim 与 tokyonight 风格一致
 			local lualine = require("lualine")
 			lualine.setup({
@@ -83,8 +80,36 @@ return {
 				dim_inactive = false,
 				transparent_mode = false,
 			})
-			-- 应用主题
-			vim.cmd("colorscheme gruvbox")
+		end,
+	},
+	{
+		"sainnhe/gruvbox-material",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			-- Optionally configure and load the colorscheme
+			-- directly inside the plugin declaration.
+			vim.g.gruvbox_material_enable_italic = true
+		end,
+	},
+	{
+		"neanias/everforest-nvim",
+		version = false,
+		lazy = false,
+		priority = 1000, -- make sure to load this before all the other start plugins
+		-- Optional; default configuration will be used if setup isn't called.
+		config = function()
+			require("everforest").setup({
+				-- Your config here
+			})
+		end,
+	},
+	{ "EdenEast/nightfox.nvim" },
+	{
+		"rose-pine/neovim",
+		name = "rose-pine",
+		config = function()
+			vim.cmd("colorscheme rose-pine")
 		end,
 	},
 }

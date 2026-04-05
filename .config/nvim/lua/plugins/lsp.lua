@@ -13,7 +13,10 @@ return {
 	},
 	{
 		"saghen/blink.cmp",
-		dependencies = { "rafamadriz/friendly-snippets" },
+		dependencies = {
+			"rafamadriz/friendly-snippets",
+			config = function() end,
+		},
 		version = "1.*",
 		---@module 'blink.cmp'
 		---@type blink.cmp.Config
@@ -127,6 +130,10 @@ return {
 			},
 			sources = {
 				default = { "lsp", "path", "snippets", "buffer" },
+				per_filetype = {
+					codecompanion = { "codecompanion" },
+					-- sql = { "snippets", "dadbod", "buffer" },
+				},
 				providers = {
 					lsp = {
 						name = "LSP",
@@ -156,6 +163,7 @@ return {
 					},
 				},
 			},
+			snippets = { preset = "default" },
 			fuzzy = {
 				implementation = "prefer_rust_with_warning",
 				-- 接近 FZF 的排序逻辑

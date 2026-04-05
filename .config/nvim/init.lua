@@ -4,6 +4,7 @@ require("config.options")
 require("config.lazy")
 require("config.terminal")
 require("config.keymap")
+require("config.theme")
 require("config.dap")
 
 vim.lsp.enable("clangd")
@@ -18,7 +19,7 @@ vim.lsp.enable("vtsls")
 vim.lsp.enable("ts_ls")
 
 if vim.g.neovide then
-	-- 字体设置：使用你喜欢的 Maple Mono，字号 15
+	-- 字体设置：使用你喜欢的 Maple Mono，字号 13
 	-- Neovide 的字体格式为 "字体名:h字号"
 	vim.o.guifont = "Maple Mono:h13"
 
