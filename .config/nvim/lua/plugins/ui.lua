@@ -1,181 +1,93 @@
 return {
 	{
 		"nvim-lualine/lualine.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
+		dependencies = { "nvim-tree/nvim-web-devicons", "SmiteshP/nvim-navic" },
 		config = function()
-			local lualine = require("lualine")
-
-			-- 获取 gruvbox-material 主题
-			local gruvbox_material = require("lualine.themes.tokyonight-storm")
-
-			-- 模式颜色映射
-			local mode_colors = {
-				n = gruvbox_material.normal.a.bg,
-				i = gruvbox_material.insert.a.bg,
-				v = gruvbox_material.visual.a.bg,
-				V = gruvbox_material.visual.a.bg,
-				c = gruvbox_material.command.a.bg,
-				s = gruvbox_material.visual.a.bg,
-				R = gruvbox_material.replace.a.bg,
-				t = gruvbox_material.insert.a.bg,
-			}
-
-			local function get_mode_color()
-				return mode_colors[vim.fn.mode()] or gruvbox_material.normal.a.bg
-			end
-
-			-- 获取模式简写
-			local function mode()
-				local map = {
-					n = "N",
-					i = "I",
-					v = "V",
-					V = "V",
-					c = "C",
-					s = "S",
-					R = "R",
-					t = "T",
-				}
-				return map[vim.fn.mode()] or "[?]"
-			end
-
-			-- 检查窗口宽度
-			local function hide_in_width()
-				return vim.fn.winwidth(0) > 80
-			end
-
-			-- LSP 状态
-			local function lsp_status()
-				local msg = "No LSP"
-				local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
-				local clients = vim.lsp.get_clients({ bufnr = 0 })
-				if next(clients) == nil then
-					return msg
-				end
-				for _, client in ipairs(clients) do
-					local filetypes = client.config.filetypes
-					if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-						return client.name:sub(1, 2)
-					end
-				end
-				return msg
-			end
-
-			-- Git 分支格式化
-			local function git_branch()
-				local branch = vim.b.gitsigns_head or vim.fn.systemlist("git rev-parse --abbrev-ref HEAD")[1]
-				if not branch or branch == "" then
-					return "No Repo"
-				end
-				local segments = {}
-				for seg in branch:gmatch("[^/]+") do
-					table.insert(segments, seg)
-				end
-				for i = 1, #segments - 1 do
-					segments[i] = segments[i]:sub(1, 1)
-				end
-				if #segments == 1 then
-					return segments[1]
-				end
-				segments[1] = segments[1]:upper()
-				for i = 2, #segments - 1 do
-					segments[i] = segments[i]:lower()
-				end
-				return table.concat(segments, "", 1, #segments - 1) .. "›" .. segments[#segments]
-			end
-
-			-- 插入图标集合
-			local icons = { "★", "☆", "✧", "✦", "❤", "♥", "♡", "⚡", "☯", "☢", "☠" }
-			local function random_icon()
-				return icons[math.random(#icons)]
-			end
-			math.randomseed(os.time())
-
-			-- 左侧组件
-			local left = {
-				{
-					mode,
-					color = { fg = gruvbox_material.normal.a.fg, bg = get_mode_color(), gui = "bold" },
-					padding = { left = 1, right = 1 },
-				},
-				{ "filename", path = 1, color = { fg = gruvbox_material.normal.b.fg, gui = "bold" } },
-				{
-					function()
-						return vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
-					end,
-					icon = "",
-					color = { fg = gruvbox_material.normal.b.fg, gui = "bold" },
-					cond = hide_in_width,
-				},
-				{ "searchcount", color = { fg = gruvbox_material.visual.a.bg, gui = "bold" }, cond = hide_in_width },
-				{
-					function()
-						return random_icon()
-					end,
-					color = { fg = gruvbox_material.insert.a.bg },
-					cond = hide_in_width,
-				},
-			}
-
-			-- 右侧组件
-			local right = {
-				{
-					function()
-						local reg = vim.fn.reg_recording()
-						return reg ~= "" and "[" .. reg .. "]" or ""
-					end,
-					color = { fg = gruvbox_material.command.a.bg, gui = "bold" },
-					cond = function()
-						return vim.fn.reg_recording() ~= ""
-					end,
-				},
-				{
-					function()
-						return random_icon()
-					end,
-					color = { fg = gruvbox_material.visual.a.bg },
-					cond = hide_in_width,
-				},
-				{
-					lsp_status,
-					icon = " ",
-					color = { fg = gruvbox_material.insert.a.bg, gui = "bold" },
-					cond = hide_in_width,
-				},
-				{
-					git_branch,
-					icon = " ",
-					color = { fg = gruvbox_material.normal.a.bg, gui = "bold" },
-					cond = hide_in_width,
-				},
-				{ "location", color = { fg = gruvbox_material.normal.a.fg, gui = "bold" } },
-				{ "progress", color = { fg = gruvbox_material.visual.a.bg, gui = "bold" } },
-			}
-
-			-- 最终配置
-			lualine.setup({
+			require("lualine").setup({
 				options = {
-					theme = gruvbox_material,
-					component_separators = "",
-					section_separators = "",
-					globalstatus = true,
-					disabled_filetypes = { "neo-tree", "undotree", "diff" },
+					component_separators = { left = "", right = "" },
+					section_separators = { left = "", right = "" },
 				},
 				sections = {
-					lualine_a = {},
-					lualine_b = {},
-					lualine_c = left,
-					lualine_x = right,
-					lualine_y = {},
-					lualine_z = {},
-				},
-				inactive_sections = {
-					lualine_a = {},
-					lualine_b = {},
-					lualine_c = { "filename" },
-					lualine_x = { "location" },
-					lualine_y = {},
-					lualine_z = {},
+					lualine_a = {
+						{
+							"mode",
+							fmt = function(str)
+								return str:sub(1, 1)
+							end,
+						},
+					},
+					-- 状态栏c段显示navic代码导航信息，此处基于官方配置进行了改写
+					lualine_c = {
+						"filename",
+						{ -- navic代码导航
+							"navic",
+							-- Component specific options
+							color_correction = nil, -- Can be nil, "static" or "dynamic". This option is useful only when you have highlights enabled.
+							-- Many colorschemes don't define same backgroud for nvim-navic as their lualine statusline backgroud.
+							-- Setting it to "static" will perform a adjustment once when the component is being setup. This should
+							--   be enough when the lualine section isn't changing colors based on the mode.
+							-- Setting it to "dynamic" will keep updating the highlights according to the current modes colors for
+							--   the current section.
+
+							navic_opts = nil, -- lua table with same format as setup's option. All options except "lsp" options take effect when set here.
+						},
+					},
+					lualine_x = { -- 去掉'fileformat'（目前只有windows、linux图标）
+						{ -- 宏录制状态提示：recording @q
+							function()
+								local reg = vim.fn.reg_recording()
+								if reg == "" then
+									return ""
+								end
+								return "󰑊 Recording @" .. reg
+							end,
+							color = { fg = "#ff9e64" },
+						},
+						-- {
+						-- 	function()
+						-- 		-- Check if MCPHub is loaded
+						-- 		if not vim.g.loaded_mcphub then
+						-- 			return "󰐻 -"
+						-- 		end
+						--
+						-- 		local count = vim.g.mcphub_servers_count or 0
+						-- 		local status = vim.g.mcphub_status or "stopped"
+						-- 		local executing = vim.g.mcphub_executing
+						--
+						-- 		-- Show "-" when stopped
+						-- 		if status == "stopped" then
+						-- 			return "󰐻 -"
+						-- 		end
+						--
+						-- 		-- Show spinner when executing, starting, or restarting
+						-- 		if executing or status == "starting" or status == "restarting" then
+						-- 			local frames =
+						-- 				{ "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
+						-- 			local frame = math.floor(vim.loop.now() / 100) % #frames + 1
+						-- 			return "󰐻 " .. frames[frame]
+						-- 		end
+						--
+						-- 		return "󰐻 " .. count
+						-- 	end,
+						-- 	color = function()
+						-- 		if not vim.g.loaded_mcphub then
+						-- 			return { fg = "#6c7086" } -- Gray for not loaded
+						-- 		end
+						--
+						-- 		local status = vim.g.mcphub_status or "stopped"
+						-- 		if status == "ready" or status == "restarted" then
+						-- 			return { fg = "#50fa7b" } -- Green for connected
+						-- 		elseif status == "starting" or status == "restarting" then
+						-- 			return { fg = "#ffb86c" } -- Orange for connecting
+						-- 		else
+						-- 			return { fg = "#ff5555" } -- Red for error/stopped
+						-- 		end
+						-- 	end,
+						-- },
+						"encoding",
+						"filetype",
+					},
 				},
 			})
 		end,
