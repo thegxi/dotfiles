@@ -140,12 +140,12 @@ return {
 						module = "blink.cmp.sources.lsp",
 						score_offset = 100,
 						-- 核心：过滤掉不想要的 LSP 建议（可选）
-						transform_items = function(_, items)
-							-- 示例：过滤掉 Java 中一些极其少用的内部类
-							return vim.tbl_filter(function(item)
-								return not string.find(item.label, "$")
-							end, items)
-						end,
+						-- transform_items = function(_, items)
+						-- 	-- 示例：过滤掉 Java 中一些极其少用的内部类
+						-- return vim.tbl_filter(function(item)
+						-- return not string.find(item.label, "%$%d")
+						-- end, items)
+						-- end,
 					},
 					snippets = {
 						name = "Snippets",

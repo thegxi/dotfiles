@@ -27,7 +27,7 @@ local fonts = {
 	"IntoneMono_NFM,霞鹜文楷等宽:h12",
 	"Iosevka_NFM,霞鹜文楷等宽:h13", -- 中文版即为Sarasa（等距更纱黑体）
 	"JetBrainsMono_NF,等距更纱黑体_SC:h12",
-	"Maple_Mono_Normal_NF_CN:h12",
+	"Maple_Mono_NF_CN:h12",
 	"MesloLGMDZ_Nerd_Font_Mono,等距更纱黑体_SC:h12", -- 苹果专用开发者字体（Line Gap, Medium, Dotted zero）
 	"Monaspace_Argon_NF,霞鹜文楷等宽:h12",
 	"Monoid_Nerd_Font_Mono,微软雅黑:h11", -- 老牌编程字体（英文大写比小写大太多）

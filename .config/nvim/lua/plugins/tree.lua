@@ -46,6 +46,7 @@ return {
 			update_focused_file = {
 				enable = false, -- 不自动展开父目录
 				update_cwd = true, -- 保留工作目录同步
+				update_root = true,
 			},
 			respect_buf_cwd = true,
 		})

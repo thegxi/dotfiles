@@ -25,8 +25,8 @@ opt.smartindent = true -- 代码块中自动增加缩进
 opt.foldmethod = "expr"
 opt.foldexpr = "v:lua.vim.treesitter.foldexpr()" -- 使用 Treesitter 计算折叠
 opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
-opt.foldlevelstart = 1 -- 打开第一层折叠,只在进入缓冲区是第一次生效
-opt.foldlevel = 1 -- 默认打开所有折叠，不让文件一打开就全是缩略状态,实时生效
+-- opt.foldlevelstart = 1 -- 打开第一层折叠,只在进入缓冲区是第一次生效
+opt.foldlevel = 99 -- 默认打开所有折叠，不让文件一打开就全是缩略状态,实时生效
 
 -- 字符集设置，可尝试重新加载文件:e ++enc=gbk，GB18030是GBK的超集
 opt.fileencodings = "ucs-bom,utf-8,gb18030,utf-16le,big5,euc-jp,euc-kr,latin1"
