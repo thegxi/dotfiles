@@ -93,6 +93,9 @@ map("i", "<Esc>", function()
 		vim.cmd("stopinsert")
 	end
 end, { silent = true, noremap = true })
+map("i", "<c-[>", function()
+	vim.cmd("stopinsert")
+end, { silent = true, noremap = true })
 
 -- 弹出 LazyGit 控制台
 map("n", "<leader>gg", "<cmd>LazyGit<cr>", { silent = true, noremap = true, desc = "LazyGit" })

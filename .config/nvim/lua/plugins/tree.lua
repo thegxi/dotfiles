@@ -43,6 +43,11 @@ return {
 					window_picker = { enable = false }, -- 禁用窗口选择器，操作更直接
 				},
 			},
+			update_focused_file = {
+				enable = false, -- 不自动展开父目录
+				update_cwd = true, -- 保留工作目录同步
+			},
+			respect_buf_cwd = true,
 		})
 		-- 统一目录树的背景色为 Gruvbox 的深色
 		vim.api.nvim_set_hl(0, "NvimTreeNormal", { bg = "#282828" })

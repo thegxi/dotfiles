@@ -22,6 +22,10 @@ opt.shiftwidth = 2 -- 缩进与反缩进操作的宽度
 opt.autoindent = true -- 新行继承前一行缩进
 opt.smartindent = true -- 代码块中自动增加缩进
 
+opt.foldmethod = "expr"
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()" -- 使用 Treesitter 计算折叠
+opt.foldlevel = 99 -- 默认打开所有折叠，不让文件一打开就全是缩略状态
+
 -- 搜索
 opt.ignorecase = true -- 搜索忽略大小写
 opt.smartcase = true -- 如果包含大写字符，则区分大小写
