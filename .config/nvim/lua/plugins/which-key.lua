@@ -6,6 +6,10 @@ return {
 	---@diagnostic disable-next-line: missing-fields
 	opts = {
 		delay = 0,
+		disable = {
+			ft = { "neo-tree", "neo-tree-popup", "alpha", "dashboard", "NvimTree" },
+			bt = {},
+		},
 		sort = { "desc" },
 		icons = {
 			-- set icon mappings to true if you have a Nerd Font

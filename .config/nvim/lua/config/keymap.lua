@@ -8,27 +8,17 @@ end, { silent = true, noremap = true, desc = "Fzf Buffers" })
 map("n", "<leader>fht", fzf.help_tags, { silent = true, noremap = true, desc = "Fzf Help" })
 map("n", "<leader>fc", fzf.command_history, { silent = true, noremap = true, desc = "Command History" })
 
-map("n", "[b", "<cmd>BufferLineCyclePrev<cr>", { silent = true, noremap = true, desc = "上一个 Buffer" })
-map("n", "]b", "<cmd>BufferLineCycleNext<cr>", { silent = true, noremap = true, desc = "下一个 Buffer" })
-map("n", "<leader>bp", "<cmd>BufferLinePick<cr>", { silent = true, noremap = true, desc = "跳转到指定 Buffer" })
-map("n", "<leader>bc", "<cmd>BufferLinePickClose<cr>", { silent = true, noremap = true, desc = "关闭指定 Buffer" })
 -- 纯原生关闭 Buffer 逻辑，不依赖任何第三方插件
-map("n", "<leader>bd", function()
-	local bufnr = vim.api.nvim_get_current_buf()
-	-- 如果是最后一个 buffer，直接删掉可能会关掉窗口，这里可以做个判断
-	vim.cmd("bdelete")
-end, { silent = true, noremap = true, desc = "Close Current Buffer" })
+-- map("n", "<leader>bd", function()
+-- 	local bufnr = vim.api.nvim_get_current_buf()
+-- 	-- 如果是最后一个 buffer，直接删掉可能会关掉窗口，这里可以做个判断
+-- 	vim.cmd("bdelete")
+-- end, { silent = true, noremap = true, desc = "Close Current Buffer" })
 
 -- 快捷键：使用 <leader>e (Explorer)
-map("n", "<leader>ee", "<cmd>NvimTreeToggle<cr>", { silent = true, noremap = true, desc = "Toggle Explorer" })
--- 自动定位到当前文件
-map(
-	"n",
-	"<leader>ef",
-	"<cmd>NvimTreeFindFile<cr>",
-	{ silent = true, noremap = true, desc = "Find current file in Tree" }
-)
-
+map("n", "<leader>e", "<cmd>Neotree toggle<cr>", { silent = true, noremap = true, desc = "Explorer" })
+map("n", "<leader>fe", "<cmd>Neotree reveal<cr>", { silent = true, noremap = true, desc = "Reveal file" })
+map("n", "<leader>b", "<cmd>Neotree buffers toggle<cr>", { silent = true, noremap = true, desc = "Buffer list" })
 -- 代码格式化
 map("n", "<leader>fc", function()
 	require("conform").format({ async = true, lsp_fallback = true })

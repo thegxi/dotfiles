@@ -1,59 +1,117 @@
 return {
-	"nvim-tree/nvim-tree.lua",
-	version = "*",
-	lazy = false, -- 建议启动时加载，方便快速找文件
-	dependencies = {
-		"nvim-tree/nvim-web-devicons",
-	},
-	config = function()
-		require("nvim-tree").setup({
-			-- 1. 基础 UI 设置
-			view = {
-				width = 30,
-				side = "left",
-				-- 在这里可以开启相对行号，符合你的 Emacs/Nvim 习惯
-				number = false,
-				relativenumber = false,
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		version = "*",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+			"MunifTanjim/nui.nvim",
+		},
+		lazy = false,
+		opts = {
+			close_if_last_window = true,
+			popup_border_style = "rounded",
+
+			enable_git_status = true,
+			enable_diagnostics = true,
+			sources = {
+				"filesystem",
+				"buffers",
+				"git_status",
 			},
-			-- 2. 渲染设置
-			renderer = {
-				group_empty = true, -- 合并空目录
-				highlight_opened_files = "all", -- 高亮已打开的文件
-				indent_markers = {
-					enable = true, -- 显示层级线条
+			source_selector = {
+				winbar = true,
+				statusline = false,
+			},
+			filesystem = {
+				-- 自定义根节点显示
+				root_node = function(config, node, state)
+					return {
+						{ text = "  ", texthl = "NeoTreeDirectoryIcon" },
+						{ text = vim.fn.fnamemodify(node.path, ":t"), texthl = "NeoTreeRootName" }, -- ":t" 只取最后一级目录名
+					}
+				end,
+				hijack_netrw_behavior = "open_current",
+				filtered_items = {
+					visible = false,
+					hide_dotfiles = false,
+					hide_gitignored = false,
 				},
-				icons = {
-					show = {
-						file = true,
-						folder = true,
-						folder_arrow = true,
-						git = true,
+				follow_current_file = {
+					enabled = true,
+				},
+
+				use_libuv_file_watcher = true,
+			},
+			window = {
+				position = "left",
+				width = 32,
+				mappings = {
+
+					["<space>"] = "toggle_node",
+
+					["<cr>"] = "open",
+					["l"] = "open",
+					["h"] = "close_node",
+
+					["a"] = {
+						"add",
+						config = {
+							show_path = "relative",
+						},
+					},
+
+					["d"] = "delete",
+					["r"] = "rename",
+
+					["y"] = "copy_to_clipboard",
+					["x"] = "cut_to_clipboard",
+					["p"] = "paste_from_clipboard",
+
+					["c"] = "copy",
+
+					["H"] = "toggle_hidden",
+
+					["/"] = "fuzzy_finder",
+
+					["q"] = "close_window",
+					["v"] = "open_vsplit",
+					["s"] = "open_split",
+				},
+			},
+
+			default_component_configs = {
+
+				indent = {
+					indent_size = 2,
+					padding = 1,
+				},
+
+				icon = {
+					folder_closed = "",
+					folder_open = "",
+					folder_empty = "󰜌",
+				},
+
+				git_status = {
+
+					symbols = {
+
+						added = "✚",
+						modified = "",
+						deleted = "✖",
+
+						renamed = "󰁕",
+						untracked = "",
+						ignored = "",
+
+						unstaged = "󰄱",
+						staged = "",
+
+						conflict = "",
 					},
 				},
 			},
-			-- 3. 过滤设置
-			filters = {
-				dotfiles = false, -- 显示隐藏文件（如 .config）
-				custom = { "^.git$" }, -- 过滤掉 .git 目录
-			},
-			-- 4. 交互设置
-			actions = {
-				open_file = {
-					quit_on_open = false, -- 打开文件后不自动关闭目录树
-					window_picker = { enable = false }, -- 禁用窗口选择器，操作更直接
-				},
-			},
-			update_focused_file = {
-				enable = false, -- 不自动展开父目录
-				update_cwd = true, -- 保留工作目录同步
-				update_root = true,
-			},
-			respect_buf_cwd = true,
-		})
-		-- 统一目录树的背景色为 Gruvbox 的深色
-		vim.api.nvim_set_hl(0, "NvimTreeNormal", { bg = "#282828" })
-		vim.api.nvim_set_hl(0, "NvimTreeEndOfBuffer", { fg = "#282828" })
-		-- 选中的文件显示为黄色
-		vim.api.nvim_set_hl(0, "NvimTreeOpenedFile", { fg = "#fabd2f", bold = true })
-	end,
+		},
+	},
 }
