@@ -18,7 +18,7 @@ map("n", "<leader>fc", fzf.command_history, { silent = true, noremap = true, des
 -- 快捷键：使用 <leader>e (Explorer)
 map("n", "<leader>e", "<cmd>Neotree toggle<cr>", { silent = true, noremap = true, desc = "Explorer" })
 map("n", "<leader>fe", "<cmd>Neotree reveal<cr>", { silent = true, noremap = true, desc = "Reveal file" })
-map("n", "<leader>b", "<cmd>Neotree buffers toggle<cr>", { silent = true, noremap = true, desc = "Buffer list" })
+-- map("n", "<leader>b", "<cmd>Neotree buffers toggle<cr>", { silent = true, noremap = true, desc = "Buffer list" })
 -- 代码格式化
 map("n", "<leader>fc", function()
 	require("conform").format({ async = true, lsp_fallback = true })
@@ -136,6 +136,8 @@ map(
 	'"_d"+P',
 	{ noremap = true, silent = true, desc = "Delete selected text, patest content on there" }
 )
+
+map("n", "<leader>b", "<cmd>Bufferin<cr>", { desc = "Toggle Bufferin" })
 
 local dap = require("dap")
 local dapui = require("dapui")

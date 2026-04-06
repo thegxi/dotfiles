@@ -16,8 +16,8 @@ return {
 			enable_diagnostics = true,
 			sources = {
 				"filesystem",
-				"buffers",
-				"git_status",
+				-- "buffers",
+				-- "git_status",
 			},
 			source_selector = {
 				winbar = true,
@@ -50,7 +50,13 @@ return {
 
 					["<space>"] = "toggle_node",
 
-					["<cr>"] = "open",
+					["<cr>"] = function(state)
+						require("neo-tree.sources.filesystem.commands").open(state)
+						require("neo-tree.command").execute({
+							action = "close",
+							source = "filesystem",
+						})
+					end,
 					["l"] = "open",
 					["h"] = "close_node",
 
@@ -77,39 +83,6 @@ return {
 					["q"] = "close_window",
 					["v"] = "open_vsplit",
 					["s"] = "open_split",
-				},
-			},
-
-			default_component_configs = {
-
-				indent = {
-					indent_size = 2,
-					padding = 1,
-				},
-
-				icon = {
-					folder_closed = "",
-					folder_open = "",
-					folder_empty = "󰜌",
-				},
-
-				git_status = {
-
-					symbols = {
-
-						added = "✚",
-						modified = "",
-						deleted = "✖",
-
-						renamed = "󰁕",
-						untracked = "",
-						ignored = "",
-
-						unstaged = "󰄱",
-						staged = "",
-
-						conflict = "",
-					},
 				},
 			},
 		},

@@ -48,11 +48,11 @@ local fonts = {
 -- "molokai", "neosolarized", "ayu", "oxocarbon", "OceanicNext", "modus",
 -- horizon字体太红
 local themes = {
-	"everforest",
+	-- "everforest",
 	"gruvbox-material",
 	"nightfox",
-	"rose-pine",
-	"tokyonight",
+	-- "rose-pine",
+	-- "tokyonight",
 }
 
 -- 字体、颜色索引，lua中数组下标从1开始
