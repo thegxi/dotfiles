@@ -22,7 +22,7 @@ end
 
 # abbr 会自动展开，可以看到实际命令
 abbr -a blog cd /home/xi/Documents/Docker/hexo/blogs
-abbr -a vihome cd /home/xi/.config/nvim
+abbr -a vihome nvim /home/xi/.config/nvim
 abbr -a sfh source /home/xi/.config/fish/config.fish
 abbr -a code /home/xi/Documents/Code-Space
 abbr -a codeg /home/xi/Documents/Code-Space/gxi/project
