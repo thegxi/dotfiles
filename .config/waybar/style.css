@@ -1,48 +1,213 @@
 @import "colors.css";
 
+/* =============== 全局 =============== */
+
 * {
-    font-family: "Maple Mono", "JetBrains Mono", sans-serif;
+    font-family: "Maple Mono", sans-serif;
     font-size: 13px;
-    font-weight: bold;
     border: none;
-    box-shadow: none;
-    padding: 0;
-    margin: 0;
+    border-radius: 0;
+    min-height: 0;
 }
 
-
-/* 模块通用样式 */
-#clock, #cpu, #memory, #disk, #temperature, #network, #bluetooth, #workspaces, #tray {
-    padding: 0 12px;
-    margin: 4px 2px;
-    /* 使用稍浅的背景色区分层级 */
-    background-color: alpha(@surface_container_low, 0.5);
-    border-radius: 8px;
+window#waybar {
+    background: alpha(@surface, 0.85);
+    color: @on_surface;
+    padding: 2px 6px;
 }
 
-/* 工作区 (Niri) 特殊样式 */
+/* tooltip */
+tooltip {
+    background: @surface_container_high;
+    border: 1px solid @outline_variant;
+    padding: 6px 8px;
+}
+
+tooltip label {
+    color: @on_surface;
+}
+
+/* 模块间距 */
+#clock,
+#custom-cava,
+#mpd,
+#network,
+#bluetooth,
+#pulseaudio,
+#tray,
+#custom-wfrec {
+    padding: 0 10px;
+}
+
+/* hover效果 */
+#clock:hover,
+#network:hover,
+#bluetooth:hover,
+#pulseaudio:hover,
+#custom-wlogout:hover,
+#custom-lockscreen:hover,
+#custom-reboot:hover,
+#custom-logout:hover {
+    background: @surface_container_high;
+}
+
+/* =============== workspaces =============== */
+
+#workspaces {
+    background: @surface_container;
+    padding: 2px 4px;
+}
+
 #workspaces button {
     color: @on_surface_variant;
-    padding: 0 5px;
+    padding: 3px 6px;
+    margin: 0 1px;
+}
+
+#workspaces button.active {
+    color: @primary;
+    background: @primary_container;
 }
 
 #workspaces button.focused {
     color: @primary;
-    background-color: alpha(@primary_container, 0.6);
 }
 
-/* 日期颜色 */
+#workspaces button:hover {
+    background: @surface_container_high;
+    color: @on_surface;
+}
+
+/* =============== clock =============== */
+
 #clock {
+    background: @surface_container;
     color: @primary;
-    font-weight: bold;
+    padding: 3px 10px;
 }
 
-/* 警告颜色 */
-#network.disconnected, #bluetooth.disabled {
-    color: @error;
+/* =============== cava =============== */
+
+#custom-cava {
+    color: @secondary;
+    padding: 0 10px;
 }
 
-/* 确保 Tray 在最右侧 */
+/* =============== mpd =============== */
+
+#mpd {
+    color: @on_surface;
+    background: @surface_container;
+    padding: 3px 10px;
+}
+
+/* =============== network / bluetooth =============== */
+
+#group-network-bluetooth {
+    background: @surface_container;
+    padding: 3px 6px;
+}
+
+#network {
+    color: @secondary;
+}
+
+#bluetooth {
+    color: @secondary;
+}
+
+/* =============== audio =============== */
+
+#group-audio {
+    background: @surface_container;
+    padding: 3px 8px;
+}
+
+#pulseaudio {
+    color: @tertiary;
+}
+
+/* slider */
+
+#pulseaudio-slider trough {
+    background: @surface_container_highest;
+    min-height: 6px;
+}
+
+#pulseaudio-slider highlight {
+    background: @tertiary;
+}
+
+/* =============== tray =============== */
+
 #tray {
-    margin-right: 8px;
+    background: @surface_container;
+    padding: 3px 8px;
+}
+
+#tray > .passive {
+    opacity: 0.7;
+}
+
+#tray > .needs-attention {
+    background: @error_container;
+}
+
+/* =============== powermenu =============== */
+
+#group-powermenu {
+    background: @surface_container;
+    padding: 3px 8px;
+}
+
+#custom-wlogout {
+    color: @error;
+    padding: 0 6px;
+}
+
+#custom-lockscreen {
+    color: @secondary;
+    padding: 0 6px;
+}
+
+#custom-reboot {
+    color: @primary;
+    padding: 0 6px;
+}
+
+#custom-logout {
+    color: @tertiary;
+    padding: 0 6px;
+}
+
+/* hover */
+
+#custom-wlogout:hover {
+    background: @error_container;
+}
+
+#custom-reboot:hover {
+    background: @primary_container;
+}
+
+/* =============== wfrec =============== */
+
+#custom-wfrec {
+    color: @error;
+    background: @surface_container;
+    padding: 3px 8px;
+}
+
+/* =============== idle inhibitor =============== */
+
+#idle_inhibitor {
+    background: @surface_container;
+    padding: 3px 8px;
+}
+
+/* =============== 动画 =============== */
+
+* {
+    transition: background 0.2s ease,
+                color 0.2s ease;
 }

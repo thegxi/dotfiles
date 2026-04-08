@@ -11,7 +11,7 @@
       "custom/wfrec"
     ],
     "modules-center": [
-      "custom_cava",
+      "custom/cava",
       "mpd"
     ],
     "modules-right": [
