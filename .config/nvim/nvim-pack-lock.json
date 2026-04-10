@@ -1,5 +1,10 @@
 {
   "plugins": {
+    "blink": {
+      "rev": "78336bc89ee5365633bcf754d93df01678b5c08f",
+      "src": "https://github.com/saghen/blink.cmp",
+      "version": "'v1'"
+    },
     "gruvgox-material": {
       "rev": "cec765e35bf99247e0dc7ef62ec375463edd7bcf",
       "src": "https://github.com/f4z3r/gruvbox-material.nvim"
