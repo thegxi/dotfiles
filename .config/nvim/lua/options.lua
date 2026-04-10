@@ -16,8 +16,9 @@ opt.fileformat = "unix" -- 设置文件默认保存格式为Unix (LF)
 opt.fileformats = { "unix", "dos", "mac" } -- 设置文件格式检测优先级, Unix优先
 
 -- 缩进与制表符
-opt.tabstop = 2 -- tab显示为4列
+opt.tabstop = 2 -- tab显示为2列
 opt.shiftwidth = 2 -- 缩进与反缩进操作的宽度
+opt.softtabstop = 2 -- 按tab键时插入2个空格
 opt.autoindent = true -- 新行继承前一行缩进
 opt.expandtab = true -- 插入tab时用空格代替
 opt.smartindent = true -- 代码块中自动增加缩进
