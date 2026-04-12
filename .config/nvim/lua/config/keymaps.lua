@@ -226,15 +226,6 @@ map("n", "<leader>us", function()
 	end
 end, { desc = "Toggle Spell + Harper" })
 
--- auto close pairs
--- map("i", "'", "''<left>")
-map("i", "`", "``<left>")
-map("i", '"', '""<left>')
-map("i", "(", "()<left>")
-map("i", "[", "[]<left>")
-map("i", "{", "{}<left>")
--- map("i", "<", "<><left>")
-
 -- vim.pack keymaps  (<leader>p = pack)
 map("n", "<leader>pp", "<cmd>Pack<cr>", { desc = "Pack UI" })
 map("n", "<leader>pu", "<cmd>lua vim.pack.update()<cr>", { desc = "Pack Update All" })
