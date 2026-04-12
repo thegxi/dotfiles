@@ -41,3 +41,4 @@ vim.opt.foldlevelstart = 99
 vim.o.guifont = "Maple Mono:h13"
 
 require("config.keymaps")
+require("config.autocmds")
