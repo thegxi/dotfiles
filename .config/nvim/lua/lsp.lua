@@ -1,51 +1,96 @@
--- Remove global default key mapping
-vim.keymap.del("n", "grn")
-vim.keymap.del("n", "gra")
-vim.keymap.del("n", "grr")
-vim.keymap.del("n", "gri")
-vim.keymap.del("n", "gO")
+-- LSP
+local function augroup(name)
+	return vim.api.nvim_create_augroup("user_" .. name, { clear = true })
+end
 
--- Create new keymapping for lsps
--- LspAttach: After an LSP Client performs "initialize" and attaches to a buffer.
-vim.api.nvim_create_autocmd("LspAttach", {
-	callback = function(args)
-		local keymap = vim.keymap
-		local lsp = vim.lsp
-		local bufopts = { noremap = true, silent = true }
-
-		keymap.set("n", "gr", lsp.buf.references, bufopts)
-		keymap.set("n", "gd", lsp.buf.definition, bufopts)
-		keymap.set("n", "<space>rn", lsp.buf.rename, bufopts)
-		keymap.set("n", "K", lsp.buf.hover, bufopts)
-		keymap.set({ "n", "v" }, "<space>f", function()
-			local mode = vim.api.nvim_get_mode().mode
-
-			if vim.startswith(string.lower(mode), "v") then
-				require("conform").format({ lsp_fallback = true, async = true, timeout_ms = 1000 }, function(err)
-					if not err then
-						if vim.startswith(string.lower(mode), "v") then
-							vim.api.nvim_feedkeys(
-								vim.api.nvim_replace_termcodes("<Esc>", true, false, true),
-								"n",
-								false
-							)
-						end
-					end
-				end)
+local default_keymaps = {
+	{ keys = "<leader>ca", func = vim.lsp.buf.code_action, desc = "Code Actions" },
+	{
+		keys = "<leader>cl",
+		func = function()
+			if vim.fn.exists(":LspOxlintFixAll") > 0 then
+				vim.cmd("LspOxlintFixAll")
+			elseif vim.fn.exists(":LspEslintFixAll") > 0 then
+				vim.cmd("LspEslintFixAll")
 			else
-				require("conform").format({
-					lsp_fallback = true,
-					async = true,
-					timeout_ms = 1000,
+				vim.lsp.buf.code_action({
+					apply = true,
+					context = { only = { "source.fixAll" }, diagnostics = {} },
 				})
 			end
-		end, bufopts)
+		end,
+		desc = "LSP Fix All",
+	},
+	{ keys = "<leader>cr", func = vim.lsp.buf.rename, desc = "Code Rename" },
+	{ keys = "<leader>k", func = vim.lsp.buf.hover, desc = "Hover Documentation", has = "hoverProvider" },
+	{ keys = "K", func = vim.lsp.buf.hover, desc = "Hover (alt)", has = "hoverProvider" },
+	{ keys = "gd", func = vim.lsp.buf.definition, desc = "Goto Definition", has = "definitionProvider" },
+	{ keys = "grt", func = vim.lsp.buf.type_definition, desc = "Goto Type Definition", has = "typeDefinitionProvider" },
+	{ keys = "grx", func = vim.lsp.codelens.run, desc = "Run Codelens", has = "codeLensProvider" },
+	{ keys = "<leader>cw", func = vim.lsp.buf.workspace_diagnostics, desc = "Workspace Diagnostics" },
+}
+
+local completion = vim.g.completion_mode or "blink" -- or 'native'
+vim.api.nvim_create_autocmd("LspAttach", {
+	group = augroup("lsp_attach"),
+	callback = function(args)
+		local client = vim.lsp.get_client_by_id(args.data.client_id)
+		local buf = args.buf
+		if client then
+			-- Built-in completion
+			if completion == "native" and client:supports_method("textDocument/completion") then
+				vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
+			end
+
+			if client:supports_method("textDocument/inlayHints") then
+				vim.lsp.inlay_hint.enable(true, { bufnr = buf })
+
+				if not vim.b[buf].inlay_hints_autocmd_set then
+					vim.api.nvim_create_autocmd("InsertEnter", {
+						buffer = buf,
+						callback = function()
+							vim.lsp.inlay_hint.enable(false, { bufnr = buf })
+						end,
+					})
+					vim.api.nvim_create_autocmd("InsertLeave", {
+						buffer = buf,
+						callback = function()
+							vim.lsp.inlay_hint.enable(true, { bufnr = buf })
+						end,
+					})
+					vim.b[buf].inlay_hints_autocmd_set = true
+				end
+			end
+
+			if client:supports_method("textDocument/documentColor") then
+				vim.lsp.document_color.enable(true, { bufnr = buf }, {
+					style = "virtual",
+				})
+			end
+
+			for _, km in ipairs(default_keymaps) do
+				-- Only bind if there's no `has` requirement, or the server supports it
+				if not km.has or client.server_capabilities[km.has] then
+					vim.keymap.set(
+						km.mode or "n",
+						km.keys,
+						km.func,
+						{ buffer = buf, desc = "LSP: " .. km.desc, nowait = km.nowait }
+					)
+				end
+			end
+		end
 	end,
 })
 
+local ts_server = vim.g.lsp_typescript_server or "vtsls"
+
+-- Enable LSP servers for Neovim 0.11+
 vim.lsp.enable({
+	"bashls",
 	"clangd",
 	"cmake",
+	"fish_lsp",
 	"gopls",
 	"html-lsp",
 	"lua_ls",
@@ -53,5 +98,10 @@ vim.lsp.enable({
 	"rust_analyzer",
 	"jsonlsp",
 	"ts_ls",
-	"tsserver",
 })
+
+-- Load Lsp on-demand, e.g: eslint is disable by default
+-- e.g: We could enable eslint by set vim.g.lsp_on_demands = {"eslint"}
+if vim.g.lsp_on_demands then
+	vim.lsp.enable(vim.g.lsp_on_demands)
+end
