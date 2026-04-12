@@ -20,10 +20,10 @@ vim.opt.backup = false
 
 vim.opt.autoread = true
 vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold" }, {
-  pattern = "*",
-  callback = function()
-    vim.cmd("checktime")
-  end,
+	pattern = "*",
+	callback = function()
+		vim.cmd("checktime")
+	end,
 })
 
 vim.opt.hlsearch = true
@@ -39,3 +39,5 @@ vim.opt.foldmethod = "syntax"
 vim.opt.foldlevelstart = 99
 
 vim.o.guifont = "Maple Mono:h13"
+
+require("config.keymaps")
