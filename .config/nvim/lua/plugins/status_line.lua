@@ -218,7 +218,7 @@ local mode_icons = {
 	i = " INSERT",
 	R = " REPLACE",
 	V = " V-LINE",
-	[""] = " V-BLOCK", -- Visual Block
+	["␖"] = " V-BLOCK", -- Visual Block
 	r = " R-PENDING",
 	v = " VISUAL",
 }
@@ -290,6 +290,6 @@ end
 
 vim.opt.laststatus = 3 -- global statusline
 vim.opt.showmode = false -- Dont show mode since we have a statusline
-vim.o.statusline = "%!v:lua.require('statusline').build()"
+vim.o.statusline = "%!v:lua.require('status_line').build()"
 
 return M
