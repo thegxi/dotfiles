@@ -3,6 +3,7 @@ vim.pack.add({
     "https://github.com/ellisonleao/gruvbox.nvim",
     "https://github.com/edeneast/nightfox.nvim",
     "https://github.com/nvim-treesitter/nvim-treesitter",
+    "https://github.com/stevearc/conform.nvim",
     { src = "https://github.com/saghen/blink.cmp",      version = "v1" },
     { src = "https://github.com/neovim/nvim-lspconfig", version = "v2.7.0" },
     { src = "https://github.com/folke/snacks.nvim",     version = "v2.31.0" },
@@ -22,6 +23,7 @@ vim.cmd.colorscheme("gruvbox")
 require("plugins.treesitter")
 require("plugins.status_line")
 require("plugins.blink")
+require("plugins.conform")
 require("plugins.lsp")
 require("plugins.snacks")
 require("plugins.mason")
