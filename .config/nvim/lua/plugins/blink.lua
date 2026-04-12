@@ -5,25 +5,7 @@ require("blink.cmp").setup({
 		preset = "none", -- 禁用预设
 		["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
 		["<C-e>"] = { "hide" },
-		["<CR>"] = {
-			function(cmp)
-				-- 1. 如果补全菜单可见，确认选中的项目
-				if cmp.is_visible() then
-					return cmp.accept()
-				end
-				-- 2. 如果不可见，手动调用 mini.pairs 的 cr() 逻辑
-				-- 这里的 nvim_replace_termcodes 是为了正确发送回车信号
-				local mini_pairs = package.loaded["mini.pairs"]
-				if mini_pairs then
-					-- 使用 nvim_replace_termcodes 处理 mini.pairs 的返回字符
-					-- 然后直接发送，并返回 true 告诉 blink 不要再 fallback 了
-					local keys = vim.api.nvim_replace_termcodes(mini_pairs.cr(), true, true, true)
-					vim.api.nvim_feedkeys(keys, "n", true)
-					return true -- 关键：阻止 blink 执行 fallback
-				end
-			end,
-			"fallback",
-		},
+		["<C-y>"] = { "accept", "fallback" },
 		-- 针对 Java 这种冗长类名的处理：使用 Tab 快速循环
 		["<Tab>"] = {
 			function(cmp)
