@@ -1,6 +1,7 @@
 -- require("3rdlibs.lazy")
 vim.pack.add({
     "https://github.com/ellisonleao/gruvbox.nvim",
+    "https://github.com/edeneast/nightfox.nvim",
     "https://github.com/nvim-treesitter/nvim-treesitter",
     { src = "https://github.com/saghen/blink.cmp",      version = "v1" },
     { src = "https://github.com/neovim/nvim-lspconfig", version = "v2.7.0" },
