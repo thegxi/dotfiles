@@ -14,6 +14,8 @@ vim.pack.add({
 	{ src = "https://github.com/mfussenegger/nvim-dap", version = "0.10.0" },
 	{ src = "https://github.com/nvim-neotest/nvim-nio", version = "v1.10.1" },
 	{ src = "https://github.com/rcarriga/nvim-dap-ui", version = "v4.0.0" },
+	{ src = "https://github.com/olimorris/codecompanion.nvim" },
+	{ src = "https://github.com/nvim-lua/plenary.nvim" },
 })
 
 require("gruvbox").setup({})
@@ -31,4 +33,5 @@ require("plugins.mason")
 require("plugins.mini")
 require("plugins.dap")
 require("plugins.which_key")
+require("plugins.ai")
 require("plugins.packui")
