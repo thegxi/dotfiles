@@ -20,10 +20,10 @@
 set -Eeuo pipefail
 
 # ================== Runtime state & Persistent Config ==================
-APP_NAME="shorin-screenrec"
+APP_NAME="xi-screenrec"
 
 RUNTIME_DIR="${XDG_RUNTIME_DIR:-/run/user/$UID}"
-STATE_DIR="$RUNTIME_DIR/shorin_screenrec"
+STATE_DIR="$RUNTIME_DIR/xi_screenrec"
 
 PIDFILE="$STATE_DIR/pid"
 STARTFILE="$STATE_DIR/start"
@@ -35,7 +35,7 @@ WAYBAR_PIDS_CACHE="$STATE_DIR/waybar.pids"
 CURRENT_ENGINE_FILE="$STATE_DIR/active_engine"
 
 XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
-CONFIG_DIR="$XDG_CACHE_HOME/shorin-screenrec"
+CONFIG_DIR="$XDG_CACHE_HOME/xi-screenrec"
 
 CFG_ENGINE="$CONFIG_DIR/engine"
 CFG_CODEC_WL="$CONFIG_DIR/codec_wl"

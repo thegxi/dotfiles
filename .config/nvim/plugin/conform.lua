@@ -37,8 +37,7 @@ require("conform").setup({
 				return {
 					"--assume-filename",
 					ctx.filename,
-					"--style=LLVM,BreakBeforeBraces:Allman",
-					-- "--style={BasedOnStyle: LLVM, BreakBeforeBraces: Allman}",
+					"--style={BasedOnStyle: LLVM, BreakBeforeBraces: Allman}",
 				}
 			end,
 		},
