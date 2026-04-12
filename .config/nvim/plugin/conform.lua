@@ -4,6 +4,8 @@ vim.pack.add({
 
 require("conform").setup({
 	formatters_by_ft = {
+		c = { "clang_format" },
+		cpp = { "clang_format" },
 		lua = { "stylua" },
 		go = { "goimports", "gofmt", stop_after_first = true },
 		python = { "ruff_format", "isort", "black", stop_after_first = true },
@@ -29,6 +31,17 @@ require("conform").setup({
 	},
 
 	formatters = {
+		clang_format = {
+			command = "clang-format",
+			args = function(_, ctx)
+				return {
+					"--assume-filename",
+					ctx.filename,
+					"--style=LLVM,BreakBeforeBraces:Allman",
+					-- "--style={BasedOnStyle: LLVM, BreakBeforeBraces: Allman}",
+				}
+			end,
+		},
 		oxfmt = {
 			args = function(_self, ctx)
 				local search_dir = ctx.dirname or vim.fn.getcwd()
