@@ -116,7 +116,7 @@ require("conform").setup({
 		if vim.api.nvim_buf_get_name(bufnr):match("/node_modules/") then
 			return
 		end
-		return { timeout_ms = 500, lsp_format = "fallback" }
+		return { timeout_ms = 500, lsp_format = "true" }
 	end,
 })
 

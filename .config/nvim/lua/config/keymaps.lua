@@ -242,3 +242,5 @@ map("n", "<leader>R", function()
 	vim.cmd("mksession! " .. vim.fn.fnameescape(session))
 	vim.cmd("restart source " .. vim.fn.fnameescape(session))
 end, { desc = "Restart Neovim" })
+
+map("i", "<A-;>", "<End>;<CR>", { desc = "Smart semicolon" })
