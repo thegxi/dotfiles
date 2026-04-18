@@ -7,6 +7,8 @@ binds {
     // 切换overview总览
     Mod+O hotkey-overlay-title="切换总览界面 toggle overview" repeat=false { toggle-overview; }
 
+    Mod+Z hotkey-overlay-title="程序菜单 Applauncher" { spawn "fuzzel"; }
+
      // niri-sidebar扩展相关
     // 切换 移动聚焦窗口至侧边栏 （建议配合切换浮动聚焦的快捷键使用，我设置的是super+n）
     Mod+I hotkey-overlay-title="收起窗口 Move to Sidebar" { spawn "niri-sidebar" "toggle-window"; }
@@ -109,7 +111,7 @@ binds {
     Mod+Shift+Alt+L { move-workspace-to-monitor-right; }
 
     // 上下切换工作区
-    Mod+U hotkey-overlay-title="上下切换工作区" { focus-workspace-down; }
+    Mod+U hotkey-overlay-title="上下切换工作区" { focus-workspace-up; }
     Mod+D hotkey-overlay-title="上下切换工作区" { focus-workspace-down; }
 
     // 移动column至工作区
