@@ -1,0 +1,14 @@
+// ==============================
+// 窗口规则
+// ==============================
+window-rule {
+    // 修复 wezterm bug
+    match app-id=r#"^org\.wezfurlong\.wezterm$"#
+    default-column-width {}
+}
+
+window-rule {
+    // Firefox 画中画默认浮动
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    open-floating true
+}

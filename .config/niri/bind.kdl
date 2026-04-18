@@ -1,0 +1,65 @@
+// ==============================
+// 快捷键
+// ==============================
+binds {
+
+    // 显示快捷键帮助
+    Mod+Shift+Slash { show-hotkey-overlay; }
+
+    // 打开终端
+    Mod+T { spawn "alacritty"; }
+
+    // 应用启动器
+    Mod+D { spawn "fuzzel"; }
+
+    // 锁屏
+    Super+Alt+L { spawn "swaylock"; }
+
+    // 关闭窗口
+    Mod+Q { close-window; }
+
+    // ======================
+    // 焦点移动（vim 风格）
+    // ======================
+    Mod+H { focus-column-left; }
+    Mod+J { focus-window-down; }
+    Mod+K { focus-window-up; }
+    Mod+L { focus-column-right; }
+
+    // ======================
+    // 移动窗口
+    // ======================
+    Mod+Ctrl+H { move-column-left; }
+    Mod+Ctrl+J { move-window-down; }
+    Mod+Ctrl+K { move-window-up; }
+    Mod+Ctrl+L { move-column-right; }
+
+    // ======================
+    // 工作区
+    // ======================
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+
+    Mod+Ctrl+1 { move-column-to-workspace 1; }
+    Mod+Ctrl+2 { move-column-to-workspace 2; }
+
+    // ======================
+    // 布局控制
+    // ======================
+    Mod+R { switch-preset-column-width; }
+    Mod+Shift+R { switch-preset-column-width-back; }
+
+    // 全屏
+    Mod+F { maximize-column; }
+    Mod+Shift+F { fullscreen-window; }
+
+    // 浮动窗口
+    Mod+V { toggle-window-floating; }
+
+    // 截图
+    Print { screenshot; }
+
+    // 退出（带确认）
+    Mod+Shift+E { quit; }
+}

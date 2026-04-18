@@ -1,0 +1,41 @@
+// ==============================
+// 输入设备配置
+// ==============================
+input {
+    keyboard {
+        xkb {
+            // 键盘布局设置（类似 setxkbmap）
+            // 示例：
+            // layout "us,ru"
+            // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
+
+            // 如果这里为空，会从系统 locale 获取（localectl）
+        }
+
+        // 启用 NumLock（不写 = 不启用）
+        numlock
+    }
+
+    touchpad {
+        // tap = 轻触点击
+        tap
+
+        // natural-scroll = 自然滚动（mac 风格）
+        natural-scroll
+    }
+
+    mouse {
+        // 鼠标设置（默认即可）
+    }
+
+    trackpoint {
+        // 小红点设备（ThinkPad）
+    }
+
+    // 鼠标自动跳到焦点窗口
+    // warp-mouse-to-focus
+
+    // 鼠标移动到窗口自动聚焦
+    // focus-follows-mouse max-scroll-amount="0%"
+}
+

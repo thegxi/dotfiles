@@ -1,0 +1,42 @@
+// ==============================
+// 布局配置（核心）
+// ==============================
+layout {
+    gaps 16  // 窗口间距
+
+    center-focused-column "never"
+
+    preset-column-widths {
+        // 预设窗口宽度（Mod+R 切换）
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+
+    // 默认窗口宽度
+    default-column-width { proportion 0.5; }
+
+    focus-ring {
+        width 4
+        active-color "#7fc8ff"
+        inactive-color "#505050"
+    }
+
+    border {
+        off  // 默认关闭边框
+    }
+
+    shadow {
+        // 窗口阴影（默认关闭）
+        // on
+
+        softness 30
+        spread 5
+        offset x=0 y=5
+        color "#0007"
+    }
+
+    struts {
+        // 类似外边距（给 waybar 用）
+    }
+}
