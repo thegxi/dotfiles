@@ -1,0 +1,258 @@
+/* 导入 Matugen 自动生成的颜色 */
+@import "colors.css";
+
+* {
+  border: none;
+  border-radius: 0;
+  font-family: "Maple Mono", "JetBrains Maple Mono";
+  font-size: 16.6px;
+  opacity: 1;
+}
+
+window#waybar {
+  background: transparent;
+  color: @on_surface;
+}
+
+tooltip {
+  background: @secondary_container;
+  border: 0.17em solid @outline;
+  opacity: 1;
+}
+
+tooltip label {
+  color: @on_surface;
+  font-size: 0.89em; /* 16px */
+}
+
+#workspaces button {
+  padding: 0px 0.56em; /* 10px */
+  background: @surface;
+  color: @tertiary_container;
+}
+
+#workspaces button:hover {
+    background: @on_tertiary;
+}
+
+#workspaces button.active{
+    color:@tertiary;
+}
+
+.taskbar {
+    background: @surface_container_high;
+    padding: 0 0 0 0.28em; /* 5px */
+}
+
+.taskbar button:hover {
+    background: @surface_container;
+}
+
+.taskbar button.focused {
+    background: @surface;
+}
+
+.taskbar button.urgent {
+    background-color: @tertiary;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#window {
+    padding: 0px 0.56em; /* 10px */
+    background-color: @surface_container_high;
+    color: @on_surface;
+}
+
+#window label {
+    font-size: 0.89em; /* 16px */
+}
+
+window#waybar.empty #window {
+    background-color: @surface_container_high;
+}
+
+#idle_inhibitor {
+    background-color: @tertiary;
+    color: @on_tertiary;
+    padding: 0px 0.36em; /* 6px */
+}
+#idle_inhibitor.activated{
+    padding: 0px 0.4em 0px 0.4em;
+}
+
+#custom-clock {
+    padding: 0px 0.45em 0em 0.45em; /* 8px */
+}
+
+#custom-clock {
+    background-color: @secondary;
+    color: @on_secondary;
+}
+
+#custom-cava {
+    background-color: @surface_container_high;
+    color: @primary;
+    padding: 0px 0.35em; /* 7px */
+}
+
+#custom-updates {
+    border-radius: 0px;
+    padding: 0px 0.17em 0px 0.39em; /* 3px 7px */
+    background-color: @surface_bright;
+    color: @error;
+
+}
+
+#tray {
+    padding: 0px 0.39em 0px 0.39em; /* 7px */
+    font-size: 1.11em; /* 20px */
+    background-color: @surface_bright;
+}
+
+#custom-ddcutil-day,
+#custom-ddcutil-night,
+#custom-ddcutil-sleep,
+#custom-separator.1 {
+    background-color: @surface_container_high;
+    color: @tertiary;
+    padding: 0px 0.33em; /* 5px */
+}
+
+#backlight {
+    background-color: @surface_container_high;
+    color: @tertiary;
+    padding: 0px 0.28em 0px 0px; /* 5px */
+}
+
+#backlight-slider {
+    background-color: @surface_container_high;
+    padding: 0px 0.28em 0px 0px; /* 5px */
+}
+
+#backlight-slider slider {
+    min-height: 0px;
+    min-width: 0px;
+    opacity: 0;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+    background: none;
+}
+
+#backlight-slider trough {
+    min-height: 0.56em; /* 10px */
+    min-width: 4.44em;  /* 80px */
+    border-radius: 0.28em; /* 5px */
+    opacity: 0;
+    background-color: @background;
+}
+
+#backlight-slider highlight {
+    min-width: 0.56em; /* 10px */
+    border-radius: 0.28em; /* 5px */
+    background-color: @tertiary;
+}
+
+#pulseaudio {
+    padding: 0px 0px 0px 0.28em; /* 5px */
+}
+
+#pulseaudio-slider {
+    padding: 0px 0px 0px 0.56em; /* 10px */
+    margin: 0px;
+}
+
+#pulseaudio-slider,
+#pulseaudio {
+    background-color: @surface_container_high;
+    color: @tertiary;
+}
+
+#pulseaudio-slider slider {
+    min-height: 0px;
+    min-width: 0px;
+    opacity: 0;
+    background-image: none;
+    box-shadow: none;
+    background: none;
+}
+
+#pulseaudio-slider trough {
+    min-height: 0.56em; /* 10px */
+    min-width: 4.44em; /* 80px */
+    border-radius: 0.28em; /* 5px */
+    background-color: @surface;
+}
+
+#pulseaudio-slider highlight {
+    min-width: 0px;
+    border-radius: 0.28em; /* 5px */
+    background-color: @tertiary;
+}
+
+#bluetooth,
+#bluetooth.disabled,
+#network,
+#battery {
+    background-color: @surface_container;
+    color: @secondary;
+    padding: 0px 0.39em; /* 7px */
+    
+}
+
+#battery.critical:not(.charging) {
+    background-color: @surface_container;
+    color: @error;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    padding: 0px 0.39em; /* 7px */
+}
+
+#bluetooth {
+    padding: 0px 0.3em 0 0.5em; /* 7px */
+    font-size: 1.13em; /* 20px */
+
+    
+}
+#bluetooth.disabled{
+    padding: 0px 0.2em 0px 0.46em ;
+}
+
+#network {
+    padding: 0px 0.35em 0 0.3em; /* 7px */
+    font-size: 1.1em; /* 22px */
+
+}
+
+#custom-wlogout {
+    padding: 0px 0.83em 0px 0.56em; /* 15px 10px */
+    font-size: 1.39em; /* 25px */
+}
+
+#custom-wlogout,
+#custom-reboot,
+#custom-lockscreen,
+#custom-logout {
+    background-color: @surface;
+    color: @error;
+    padding: 0px 0.56em; /* 10px */
+}
+
+#cpu,
+#disk,
+#temperature,
+#memory {
+    background-color: @surface_container;
+    color: @secondary;
+    padding: 0px 0.39em; /* 7px */
+}
+
+
+
