@@ -7,6 +7,29 @@ binds {
     // 切换overview总览
     Mod+O hotkey-overlay-title="切换总览界面 toggle overview" repeat=false { toggle-overview; }
 
+     // niri-sidebar扩展相关
+    // 切换 移动聚焦窗口至侧边栏 （建议配合切换浮动聚焦的快捷键使用，我设置的是super+n）
+    Mod+I hotkey-overlay-title="收起窗口 Move to Sidebar" { spawn "niri-sidebar" "toggle-window"; }
+    // 切换 收起/展开侧边栏
+    Mod+Shift+I hotkey-overlay-title="展开/收起侧边栏 Toggle Sidebar" { spawn "niri-sidebar" "toggle-visibility";}
+    // 反向排序侧边栏
+    Mod+Alt+X hotkey-overlay-title=null { spawn "niri-sidebar" "flip";}
+    // 重新排列侧边栏中的窗口（侧边栏中的窗口本质是一个浮动窗口，你有时候可能会把它移动到别的地方
+    // 例如 ctrl+c居中。此时按下此键可以重新排列）
+    Mod+Alt+R hotkey-overlay-title="重置侧边栏 Reorder Sidebar"  { spawn "niri-sidebar" "reorder"; }
+
+    // 壁纸
+     Mod+Alt+W hotkey-overlay-title="切换壁纸 Change wallpaper" {spawn "waypaper";}
+    Mod+Alt+M hotkey-overlay-title="切换颜色策略 Change color strategy" {spawn "~/Documents/Scripts/matugen-select-type.sh";}
+    Mod+Alt+T hotkey-overlay-title="切换颜色策略 Change color strategy" {spawn "~/Documents/Scripts/matugen-select-type.sh";}
+    Mod+F10 hotkey-overlay-title="随机切换壁纸 Random wallpaper" {spawn "waypaper" "--random";}
+    Mod+Shift+F10 hotkey-overlay-title="随机下载动漫壁纸 Random download anime wallpaper" {spawn "~/Documents/Scripts/random-anime-wallpaper.sh";}
+
+    // 临时开一个浮动终端
+    Mod+Slash hotkey-overlay-title="临时终端 Quick Terminal" {spawn "kitty" "--single-instance" "--class" "quickterminal";}
+    Mod+T hotkey-overlay-title="共享终端 Terminal" { spawn "kitty" "--single-instance"; }
+    Mod+return hotkey-overlay-title="独立终端 Terminal" { spawn "kitty"; }
+
     // 关闭聚焦窗口
     Mod+Q hotkey-overlay-title="关闭聚焦窗口 close foucs window" repeat=false { close-window; }
 
@@ -34,6 +57,7 @@ binds {
     // 调整窗口宽度
     Mod+Minus hotkey-overlay-title="缩小窗口宽度" { set-column-width "-5%"; }
     Mod+Equal hotkey-overlay-title="增大窗口宽度" { set-column-width "+5%"; }
+
     // 调整窗口高度
     Mod+Shift+Minus hotkey-overlay-title="缩小窗口高度" { set-window-height "-5%"; }
     Mod+Shift+Equal hotkey-overlay-title="增大窗口高度" { set-window-height "+5%"; }

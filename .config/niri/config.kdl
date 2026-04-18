@@ -23,7 +23,7 @@ include "rule.kdl"
 // ==============================
 // 截图路径
 // ==============================
-screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+screenshot-path "~/Pictures/screenshots from %Y-%m-%d %H-%M-%S.png"
 
 // 环境变量
 environment {
@@ -65,8 +65,8 @@ recent-windows {
     open-delay-ms 150 // 打开窗口切换的延迟
 
     highlight {
-        active-color "#999999ff" // 当前选中窗口的高亮
-        urgent-color "#ff9999ff" // 在未聚焦的窗口中也以较深的色调显示
+        active-color "#343b38" // 当前选中窗口的高亮
+        urgent-color "#ffb4ab" // 在未聚焦的窗口中也以较深的色调显示
         padding 30 // 高亮区域的内边距
         corner-radius 0 // 圆角
     }
