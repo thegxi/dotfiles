@@ -188,26 +188,26 @@
   },
   "cpu": {
     "interval": 10,
-    "format": "",
+    "format": "🧠",
     "max-length": 10,
     "format-alt-click": "click-right",
-    "format-alt": " {usage}%"
+    "format-alt": "🧠{usage}%"
   },
   "memory": {
     "interval": 30,
-    "format": "",
+    "format": "📼",
     "format-alt-click": "click-right",
-    "format-alt": " {}%",
+    "format-alt": "📼{}%",
     "max-length": 10,
     "tooltip": true,
     "tooltip-format": "Memory - {used:0.1f}GB used"
   },
   "disk": {
     "interval": 600,
-    "format": "󰋊",
+    "format": "💿",
     "path": "/",
     "format-alt-click": "click-right",
-    "format-alt": "󰋊 {percentage_used}%",
+    "format-alt": "💿{percentage_used}%",
     "tooltip": true,
     "tooltip-format": "HDD - {used} used out of {total} on {path} ({percentage_used}%)",
     "states": {
@@ -217,11 +217,11 @@
   },
   "temperature": {
     "thermal-zone": 1,
-    "format": "",
+    "format": "❄️",
     "format-alt-click": "click-right",
-    "format-alt": " {temperatureC}°C",
+    "format-alt": "❄️ {temperatureC}°C",
     "critical-threshold": 70,
-    "format-critical": "  {temperatureC}°C"
+    "format-critical": "🌡️{temperatureC}°C"
   },
   "custom/updates": {
     "format": "{}{icon}",
@@ -251,7 +251,7 @@
         "󰤥",
         "󰤨"
       ],
-      "ethernet": "󰈀"
+      "ethernet": "🔗"
     },
     //鼠标悬浮在wifi图标上会显示wifi名称、信号强度、ip地址、设备名
     "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ifname} : {ipaddr}\n---\n左键：打开面板\n右键：打开高级网络配置工具",
