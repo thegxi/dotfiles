@@ -244,3 +244,17 @@ map("n", "<leader>R", function()
 end, { desc = "Restart Neovim" })
 
 map("i", "<A-;>", "<End>;<CR>", { desc = "Smart semicolon" })
+
+vim.keymap.set('n', '<leader>wf', ':w !sudo -S tee % > /dev/null<CR>', {
+    silent = true,
+    desc = 'Normal mode: One-touch sudo save'
+})
+
+vim.keymap.set('c', 'w!!', 'w !sudo -S tee % > /dev/null', {
+    desc = 'Command mode: Alias expansion'
+})
+
+vim.keymap.set('i', '<C-S-s>', '<Esc>:w !sudo -S tee % > /dev/null<CR>a', {
+    silent = true,
+    desc = 'Insert mode: Save and stay in insert'
+})

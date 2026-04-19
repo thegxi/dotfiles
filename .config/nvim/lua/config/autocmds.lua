@@ -200,4 +200,12 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	end,
 })
 
-
+-- 禁用注释自动延续（在 FileType 事件触发，确保覆盖插件设置）
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function()
+    vim.opt.formatoptions:remove("c")
+    vim.opt.formatoptions:remove("r")
+    vim.opt.formatoptions:remove("o")
+  end,
+})
