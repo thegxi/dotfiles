@@ -37,6 +37,7 @@ vim.opt.mouse = ""
 vim.opt.foldenable = true
 vim.opt.foldmethod = "syntax"
 vim.opt.foldlevelstart = 99
+vim.opt.clipboard = "unnamedplus"
 
 vim.o.guifont = "Maple Mono:h13"
 
