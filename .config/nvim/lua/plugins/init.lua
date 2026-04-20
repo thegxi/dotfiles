@@ -1,7 +1,10 @@
 -- require("3rdlibs.lazy")
 vim.pack.add({
-	"https://github.com/ellisonleao/gruvbox.nvim",
 	"https://github.com/edeneast/nightfox.nvim",
+  "https://github.com/sainnhe/gruvbox-material",
+  "https://github.com/uhs-robert/oasis.nvim",
+  "https://github.com/folke/tokyonight.nvim",
+
 	"https://github.com/nvim-treesitter/nvim-treesitter",
 	"https://github.com/stevearc/conform.nvim",
 	"https://github.com/folke/which-key.nvim",
@@ -18,10 +21,11 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
 })
 
-require("gruvbox").setup({})
+-- require("nightfox").setup({})
+require("tokyonight").setup({})
 
 vim.o.background = "dark"
-vim.cmd.colorscheme("gruvbox")
+vim.cmd.colorscheme("tokyonight-storm")
 
 require("plugins.treesitter")
 require("plugins.status_line")

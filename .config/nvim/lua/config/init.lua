@@ -38,6 +38,7 @@ vim.opt.foldenable = true
 vim.opt.foldmethod = "syntax"
 vim.opt.foldlevelstart = 99
 vim.opt.clipboard = "unnamedplus"
+vim.opt.showtabline = 2 -- 总是显示顶栏
 
 vim.o.guifont = "Maple Mono:h13"
 
