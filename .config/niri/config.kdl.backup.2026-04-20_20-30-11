@@ -1,0 +1,86 @@
+// 输入设备配置
+include "input.kdl"
+
+// 快捷键
+include "bind.kdl"
+
+// 显示器配置
+include "output.kdl"
+
+// 布局配置
+include "layout.kdl"
+
+// 启动程序
+include "spawn.kdl"
+
+// 动画
+include "animation.kdl"
+
+// 窗口规则
+include "rule.kdl"
+
+
+// ==============================
+// 截图路径
+// ==============================
+screenshot-path "~/Pictures/screenshots from %Y-%m-%d %H-%M-%S.png"
+
+// 环境变量
+environment {
+  // 输入法
+  XMODIFIERS "@im=fcitx"
+  // 默认文本编辑器
+  EDITOR "nvim"
+}
+
+// 光标配置
+cursor {
+  // 主题
+  xcursor-theme "breeze_cursors"
+  // 大小
+  xcursor-size 30
+  hide-when-typing
+  // 闲置多少毫秒隐藏光标
+  hide-after-inactive-ms 15000
+}
+
+// 全局视图
+overview {
+    zoom 0.45 // 视图缩放比例
+    backdrop-color "#1a1a1acc" // 背景颜色
+
+    workspace-shadow {
+        // off // 打开工作区阴影效果
+        softness 60 // 阴影模糊程度,越大越柔和
+        spread 20 // 阴影扩散范围
+        offset x=0 y=15 // 阴影偏移
+        color "#00000000" // 阴影颜色
+    }
+}
+
+// 带缩略图的super+tab切换窗口
+recent-windows {
+    // off // 默认不禁用
+    debounce-ms 75 // 窗口获取到焦点的延迟,值越大越稳定0
+    open-delay-ms 150 // 打开窗口切换的延迟
+
+    highlight {
+        active-color "#343b38" // 当前选中窗口的高亮
+        urgent-color "#ffb4ab" // 在未聚焦的窗口中也以较深的色调显示
+        padding 30 // 高亮区域的内边距
+        corner-radius 0 // 圆角
+    }
+
+    previews {
+        max-height 480 // 窗口预览最大高度
+        max-scale 0.5 // 预览缩放比例
+    }
+
+    binds {
+        Mod+Tab         { next-window; } // 切换到下一个最近使用的窗口
+        Mod+Shift+Tab   { previous-window; } // 反向切换窗口
+        Mod+grave       { next-window     filter="app-id"; } // 在同一应用"窗口切换"
+        Mod+Shift+grave { previous-window filter="app-id"; } // 在同一应用反向切换
+    }
+}
+
