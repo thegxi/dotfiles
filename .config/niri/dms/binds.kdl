@@ -1,6 +1,5 @@
 binds {
     // === System & Overview ===
-    Mod+D repeat=false { toggle-overview; }
     Mod+Tab repeat=false { toggle-overview; }
     Mod+Shift+Slash { show-hotkey-overlay; }
 
@@ -19,10 +18,10 @@ binds {
     }
 
     Super+X hotkey-overlay-title="Power Menu: Toggle" { spawn "dms" "ipc" "call" "powermenu" "toggle"; }
-    Mod+Comma hotkey-overlay-title="Settings" {
+    Ctrl+Alt+S hotkey-overlay-title="Settings" {
         spawn "dms" "ipc" "call" "settings" "focusOrToggle";
     }
-    Mod+Y hotkey-overlay-title="Browse Wallpapers" {
+    Mod+Alt+W hotkey-overlay-title="Browse Wallpapers" {
         spawn "dms" "ipc" "call" "dankdash" "wallpaper";
     }
     Mod+N hotkey-overlay-title="Notification Center" { spawn "dms" "ipc" "call" "notifications" "toggle"; }
@@ -32,10 +31,7 @@ binds {
     Mod+Alt+L hotkey-overlay-title="Lock Screen" {
         spawn "dms" "ipc" "call" "lock" "lock";
     }
-    Mod+Shift+E { quit; }
-    Ctrl+Alt+Delete hotkey-overlay-title="Task Manager" {
-        spawn "dms" "ipc" "call" "processlist" "focusOrToggle";
-    }
+    Mod+Ctrl+Alt+Shift+E { quit; }
 
     // === Audio Controls ===
     XF86AudioRaiseVolume allow-when-locked=true {
@@ -107,10 +103,10 @@ binds {
     Mod+Shift+L     { move-column-right; }
 
     // === Column Navigation ===
-    Mod+Home { focus-column-first; }
-    Mod+End  { focus-column-last; }
-    Mod+Ctrl+Home { move-column-to-first; }
-    Mod+Ctrl+End  { move-column-to-last; }
+    Mod+Shift+A { focus-column-first; }
+    Mod+Shift+E { focus-column-last; }
+    Mod+Ctrl+A { move-column-to-first; }
+    Mod+Ctrl+E { move-column-to-last; }
 
     // === Monitor Navigation ===
     Mod+Ctrl+Left  { focus-monitor-left; }
@@ -135,13 +131,11 @@ binds {
     // === Workspace Navigation ===
     Mod+Page_Down      { focus-workspace-down; }
     Mod+Page_Up        { focus-workspace-up; }
-    Mod+U              { focus-workspace-down; }
-    Mod+I              { focus-workspace-up; }
+    Mod+D              { focus-workspace-down; }
+    Mod+U              { focus-workspace-up; }
     Mod+Ctrl+Down { move-column-to-workspace-down; }
-    Mod+Ctrl+Up   { move-column-to-workspace-up; }
-    Mod+Ctrl+U         { move-column-to-workspace-down; }
-    Mod+Ctrl+I         { move-column-to-workspace-up; }
-
+    Mod+Ctrl+U { move-column-to-workspace-up; }
+    Mod+Ctrl+D         { move-column-to-workspace-down; }
     // === Workspace Management ===
     Ctrl+Shift+R hotkey-overlay-title="Rename Workspace" {
         spawn "dms" "ipc" "call" "workspace-rename" "open";
@@ -150,8 +144,8 @@ binds {
     // === Move Workspaces ===
     Mod+Shift+Page_Down { move-workspace-down; }
     Mod+Shift+Page_Up   { move-workspace-up; }
-    Mod+Shift+U         { move-workspace-down; }
-    Mod+Shift+I         { move-workspace-up; }
+    Mod+Shift+D         { move-workspace-down; }
+    Mod+Shift+U         { move-workspace-up; }
 
     // === Mouse Wheel Navigation ===
     Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
