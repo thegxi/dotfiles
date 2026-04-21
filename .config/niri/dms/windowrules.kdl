@@ -1,0 +1,7 @@
+// 为 scratch-kitty 设置浮动和小尺寸
+window-rule {
+  match app-id="quickterminal"
+	open-floating true
+	default-floating-position x=20 y=20 relative-to="top"
+}
+

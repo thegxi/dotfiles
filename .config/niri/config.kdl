@@ -254,6 +254,7 @@ window-rule {
 window-rule {
     match app-id=r#"org.quickshell$"#
     match app-id=r#"com.danklinux.dms$"#
+    match app-id=r#"quickterminal"#
     open-floating true
 }
 debug {
