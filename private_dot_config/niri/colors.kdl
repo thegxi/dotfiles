@@ -1,0 +1,20 @@
+layout{
+    focus-ring{
+        active-gradient from="#80d5d0cc" to="#b1c9e8cc" angle=135
+        urgent-color "#ffb4ab"
+
+        }
+}
+recent-windows {    
+    highlight {
+        active-color "#343a3a"
+        urgent-color "#ffb4ab"
+    }
+}
+
+screen-cast-picker {
+    background-color "#0e1514"
+    accent-color "#80d5d0"
+    text-color "#dde4e2"
+    accent-text-color "#003735"
+}

@@ -1,0 +1,27 @@
+[config]
+
+[templates.waybar]
+input_path = '~/.config/matugen/templates/colors.css'
+output_path = '~/.config/waybar/colors.css'
+
+# [templates.fuzzel]
+# input_path = '~/.config/matugen/templates/fuzzel.ini'
+# output_path = '~/.config/fuzzel/colors.ini'
+
+# [templates.fcitx5]
+# input_path = '~/.config/matugen/templates/fcitx5-theme.conf'
+# output_path = '~/.local/share/fcitx5/themes/Matugen/theme.conf'
+# post_hook= 'fcitx5 -r & disown '
+
+# [templates.mako]
+# input_path = '~/.config/matugen/templates/mako-colors.conf'
+# output_path = '~/.config/mako/colors.conf'
+# post_hook='makoctl reload &'
+#
+# [templates.yazi]
+# input_path = '~/.config/matugen/templates/yazi-theme.toml'
+# output_path = '~/.config/yazi/theme.toml'
+#
+# [templates.niri]
+# input_path = '~/.config/matugen/templates/niri-colors.kdl'
+# output_path = '~/.config/niri/colors.kdl'

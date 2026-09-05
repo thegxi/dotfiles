@@ -1,0 +1,172 @@
+@import "colors.css";
+
+* {
+  font-family:
+    "Maple Mono NF CN",
+    "Symbols Nerd Font Mono";
+  font-size: 14px;
+}
+
+
+window#waybar {
+  background: alpha(@background, 0.8);
+  color: @on_background;
+}
+
+/* ===============================
+        LEFT MODULES
+================================ */
+#workspaces {
+  margin: 0 10px;
+}
+
+#workspaces button {
+  all: unset;
+  background: @outline_variant;
+  border-radius: 999px;
+  margin: 4px 4px;
+  min-width: 8px;
+  min-height: 8px;
+  opacity: 0.6;
+}
+
+
+#workspaces button.active {
+  background: @primary;
+  min-width: 30px;
+  opacity: 1;
+}
+
+
+#workspaces button:hover {
+  background: @primary_container;
+}
+
+
+#window {
+  color: @on_surface;
+  padding: 0 8px;
+}
+
+
+window#waybar.empty #window {
+  background: transparent;
+}
+
+/* ===============================
+        CENTER MODULES
+================================ */
+#clock,
+#custom-weather,
+#custom-system,
+#privacy,
+#custom-mako,
+#custom-wf-recorder {
+  color: @on_surface;
+  margin: 0px 3px;
+  padding: 0px 8px;
+  border-radius: 8px;
+}
+
+#clock:hover,
+#custom-weather:hover,
+#custom-system:hover,
+#privacy:hover,
+#custom-mako:hover {
+  background: @primary_container;
+  color: @on_primary_container;
+}
+
+#custom-wf-recorder {
+  color: @error;
+  animation: rec-blink 1s infinite;
+}
+
+@keyframes rec-blink {
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* ===============================
+        RIGHT MODULES
+================================ */
+#battery,
+#pulseaudio,
+#network,
+#bluetooth,
+#custom-idle {
+  color: @on_surface;
+  margin: 0px 3px;
+  padding: 0px 8px;
+  border-radius: 8px;
+}
+
+#battery:hover,
+#pulseaudio:hover,
+#network:hover,
+#bluetooth:hover,
+#custom-idle:hover {
+  background: @primary_container;
+  color: @on_primary_container;
+}
+
+/* battery states */
+#battery.warning {
+  color: @tertiary;
+}
+
+#battery.critical {
+  color: @error;
+}
+
+/* bluetooth */
+#bluetooth.off {
+  color: @outline;
+}
+
+#bluetooth.on {
+  color: @primary;
+}
+
+/* privacy */
+#privacy-item.screenshare {
+  color: @tertiary;
+}
+
+#privacy-item.location {
+  color: @secondary;
+}
+
+#privacy-item.audio-in {
+  color: @primary;
+}
+
+/* tray */
+#tray {
+  margin: 2px 12px;
+}
+
+#tray menu {
+  background: @surface_container;
+  color: @on_surface;
+  border-radius: 8px;
+}
+
+/* separator */
+#custom-sep {
+  color: @outline;
+}
+
+/* ===============================
+        TOOLTIP
+================================ */
+tooltip {
+  background: @surface_container;
+  color: @on_surface;
+  border-radius: 8px;
+}
+
+tooltip label {
+  color: @on_surface;
+}

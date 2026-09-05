@@ -1,0 +1,55 @@
+sw_volume: 90
+audio_device_state:1:PipeWire Sound Server
+audio_device_state:1:HTTP Stream
+audio_device_state:1:Visulaizer feed
+state: stop
+current: 38
+random: 0
+repeat: 1
+single: 0
+consume: 0
+crossfade: 0
+mixrampdb: 0
+mixrampdelay: -1
+lastloadedplaylist: my_music
+playlist_begin
+0:(你的心河) - 李.mp3
+1:夏日之梦 - 傅许.mp3
+2:这才是 《躲避的爱》 真正的原版原唱  完整版 - 大宝剑音乐平台.m4a
+3:Endless Horizon - Bandari.mp3
+4:Last Reunion (最后的重逢) - Peter Roe.mp3
+5:Like The Wind - S.E.N.S..mp3
+6:唯一 - G.E.M.邓紫棋.mp3
+7:涓庢垜鏃犲叧 - 闃垮啑.mp3
+8:野心家 (Live) - 张月.mp3
+9:姜氏孤儿 - 麦振鸿.mp3
+10:姜氏孤儿 - 电视原声.mp3
+11:回梦游仙 - 骆集益.mp3
+12:鏃犳硶鎺╃洊浣犲崈骞寸殑鐥磋糠 - 姣涗寒.mp3
+13:韪忓ぉ - 姣涗寒.mp3
+14:何惜一战 - 仙君.mp3
+15:渡尘寰 - 仙君.mp3
+16:闅捐垗 - 浠欏悰.mp3
+17:浼界綏 (Kyara) - S.E.N.S..mp3
+18:凄美地 - 郭顶.mp3
+19:鍖栧嚒 - 鍦ｅ厜鐏典富.mp3
+20:特别的人 - 方大同.mp3
+21:可不可以 - 张紫豪.mp3
+22:盛夏的果实 - 莫文蔚.mp3
+23:千年缘 - 心然.mp3
+24:忘不掉的你 - h3R3.mp3
+25:最后一页 - 江语晨.mp3
+26:出现又离开 (Live) - 梁博.mp3
+27:猜不透 - 丁当.mp3
+28:晚风心里吹 - 阿梨粤.mp3
+29:野心家 - 张靓颖.mp3
+30:锈 (我们两个都拉过勾) - 江辰.mp3
+31:Here We Are Again (纯音起势版) - 纯音乐站.mp3
+32:演员 - 薛之谦.mp3
+33:Letting Go - 蔡健雅.mp3
+34:谁明浪子心 - 王杰.mp3
+35:还是会想你 - 林达浪 & h3R3.mp3
+36:逆心《仙逆（119集）明萱纯音乐》 - 彭阿彬.mp3
+37:雨爱 - 杨丞琳.mp3
+38:雪下的时候 - 乔佳旭.mp3
+playlist_end
